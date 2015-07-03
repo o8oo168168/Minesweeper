@@ -1,0 +1,1997 @@
+<!doctype html>
+<html>
+<head>
+<style type="text/css">
+*{
+	  margin : 0px;
+	  padding : 0px;
+	  //border : 3px outset white;
+}
+body{
+	  background-color: black ;
+	  width : 100%;
+	  height : 100%;
+	  border: 0px;
+}
+div{
+	  float:left;
+	  position : relative;
+	  height : 0.5px;
+	  width : 0.5px;
+	  padding : 15px;
+	  margin:1.5px;
+	  text-align:center;
+	  line-height: 35%;
+	  font-size:1px;
+	  border : 3px outset white;
+}
+.Block{
+	  float:left;
+	  position : relative;
+	  height : 0.5px;
+	  width : 0.5px;
+	  padding : 10px;
+	  margin:1.5px;
+	  text-align:center;
+	  line-height: 35%;
+	  border : 3px outset;
+	  border-color:#F0F0F0;
+	  background-color:#ADADAD;
+	  font-size:1px;
+}
+._0,._1,._2,._3,._4,._5,._6,._7,._8,.Dead{
+	  float:left;
+	  position : relative;
+	  height : 0.5px;
+	  width : 0.5px;
+	  padding : 10px;
+	  margin:1.5px;
+	  text-align:center;
+	  line-height: 35%;
+	  border : 3px outset;
+	  border-color:#F0F0F0;
+	  background-color:#ADADAD;
+	  font-size:3px;
+}
+
+#wrapper{
+  background-color: #7B7B7B;
+  position : absolute ;
+  top:5%;
+  left:2.5%;
+  width : 266.5px;
+  height : 263px;
+  padding-left: 0px;
+  padding-top: 134px;
+  padding-bottom: 0px;
+  padding-right: 0px;
+  border : 3px outset white;
+  border-radius : 5px;
+}
+#top_menu{
+  position : absolute ;
+  width : 243px;
+  height : 85px;
+  padding-left: 0px;
+  padding-top: 40px;
+  padding-bottom: 0px;
+  margin-top : -133px;
+  margin-bottom : 0px;
+  border : 3px outset white;
+  border-radius : 5px;
+  border-color:#F0F0F0;
+  background-color:#ADADAD;
+}
+#bomb_number{
+  left:12px;
+  width : 50px;
+  height : 30px;
+  color:white;
+  padding : 0px;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  font: 28px arial, sans-serif;
+  text-align: center;
+  background-color: black;
+  color: red;
+  border:2px inset #808080;
+}
+#smile_head{
+  left:47px;
+  width : 10px;
+  height : 6px;
+  color:white;
+  font: 28px arial, sans-serif;
+  line-height: 20%;
+  background-color: #C0C0C0;
+  border : 3px outset white;
+  color: white ;
+  text-shadow: 2px 2px 2px black;
+}
+#timmer{
+  left:81px;
+  width : 50px;
+  height : 30px;
+  padding : 0px;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  font: 28px arial, sans-serif;
+  text-align: center;
+  background-color: black;
+  color:#FF0000;
+  border:2px inset #808080;
+}
+.Dead{
+  //background-color: darkred;
+}
+._Q{
+  //background-color: #003D79;
+  color: black;
+  border : 3px outset white;
+}
+._9{
+  background-color:#ADADAD;
+  border:3px inset #d0d0d0;
+  color: white;
+  text-align: center;
+  font-weight	:600;
+}
+._1{
+  color:#0000E3;
+}
+._2{
+  color:#006000;   
+}
+._3{
+  color: #EA0000;   
+}
+._4{
+  color:#000093;
+}
+._F{
+  color: #CE0000;
+  border : 3px outset white;
+}
+</style>
+<script>
+{
+var FLAGNUMBER = 0;
+var BOMBNUMBER = 10;
+var TIME = 0;
+}
+
+//print out game base
+function gamebase(){
+  document.write("<div id='wrapper'>"); //start wrapper
+  document.write("<div id='top_menu'><div id='bomb_number'>" + BOMBNUMBER + "</div><div id='smile_head'>:)</div><div id='timmer'>" + TIME + "</div></div>");
+  for(i=1;i<=9;i++){
+    document.write("<div id = '" + i + "' class='Block' onclick='beforeStart(this)' onContextMenu='' > </div>");
+  }
+  document.write("<br/>");
+  for(i=10;i<=18;i++){
+    document.write("<div id = '" + i + "' class='Block' onclick='beforeStart(this)' onContextMenu='' > </div>");
+  }
+  document.write("<br/>");
+  for(i=19;i<=27;i++){
+    document.write("<div id = '" + i + "' class='Block' onclick='beforeStart(this)' onContextMenu='' > </div>");
+  }//end for
+  document.write("<br/>");
+  for(i=28;i<=36;i++){
+    document.write("<div id = '" + i + "' class='Block' onclick='beforeStart(this)' onContextMenu='' > </div>");
+  }//end for
+  document.write("<br/>");
+  for(i=37;i<=45;i++){
+    document.write("<div id = '" + i + "' class='Block' onclick='beforeStart(this)' onContextMenu='' > </div>");
+  }//end for
+  document.write("<br/>");
+  for(i=46;i<=54;i++){
+    document.write("<div id = '" + i + "' class='Block' onclick='beforeStart(this)' onContextMenu='' > </div>");
+  }//end for
+  document.write("<br/>");
+  for(i=55;i<=63;i++){
+    document.write("<div id = '" + i + "' class='Block' onclick='beforeStart(this)' onContextMenu='' > </div>");
+  }//end for
+  document.write("<br/>");
+  for(i=64;i<=72;i++){
+    document.write("<div id = '" + i + "' class='Block' onclick='beforeStart(this)' onContextMenu='' > </div>");
+  }//end for
+  document.write("<br/>");
+  for(i=73;i<=81;i++){
+    document.write("<div id = '" + i + "' class='Block' onclick='beforeStart(this)' onContextMenu='' > </div>");
+  }//end for
+  document.write("</div>"); //end wrapper
+}//end function
+
+//onload
+gamebase();
+
+
+//globals
+{
+var BombArray = new Array();
+var PlaceBomb;
+var a = BombArray.length;
+var CheckAround;
+var ClickTimes = 0;
+var fucnC0 = function(){C_0(this)};
+var funcFlag = function(){Flag(this)};
+var reload = function(){location.reload()};
+var TIME = 0;
+var time = TIME;
+function runTIMMER(){
+  if(time<999){
+  TIME++;
+  document.getElementById("timmer").innerHTML = TIME;
+  setTimeout(runTIMMER,1000);
+  }//end if
+}//end function
+//http://wallofscribbles.com/2011/setinterval-the-sneaky-basterd-child-of-javascript/
+}
+
+{
+var B = []; B[0];
+for(var ct=1;ct<=81;ct++){
+B[ct]=document.getElementById(ct);
+}//end for
+}
+
+{
+var F = []; F[0];
+for(var ctF=1;ctF<=81;ctF++){
+F[ctF]=0;
+}//end for
+
+var FN = []; FN[0];
+for(var j=1;j<=81;j++){
+FN[j];
+}//end for
+
+var FLAGNUMBER = 0;
+var BOMBNUMBER = 10;
+
+}
+
+</script>
+</head>
+<body oncontextmenu="return false">
+<script>
+  document.getElementById("smile_head").addEventListener("click",reload);
+  document.getElementById("smile_head").addEventListener("mousedown",function(){document.getElementById("smile_head").innerHTML=":o";});
+//RULES
+function beforeStart(obj){
+
+  runTIMMER();
+
+
+  if(obj){var ID = Number(obj.id);}//end if //use a if statement to get rid of a error
+  //console.log(ID);
+  var THIS = document.getElementById(ID);
+  //the loop to add item into the array
+  run();
+  function run(){
+    while(a != 10){
+      PlaceBomb = Math.floor(Math.random() * 81);
+      var Check = BombArray.indexOf(PlaceBomb);
+      if(PlaceBomb !== ID && Check === -1 && PlaceBomb !== 0){
+        BombArray.push(PlaceBomb);
+        a++;
+        //alert(a);
+        //console.log(BombArray);
+      }else{
+        //console.log(PlaceBomb);
+        run();
+      }//end if
+    }//end while
+  }//end function
+
+  if(a===10){
+    //消除每個格子一開始的onclick設定 把beforestart function 剔除
+    for(b=1;b<=81;b++){
+      document.getElementById(b).setAttribute("onclick","");
+      //console.log(document.getElementById(b));
+    }//end for
+
+  //get the information from the array , and put it into the block
+  document.getElementById(BombArray[0]).setAttribute("class", "Dead");
+  document.getElementById(BombArray[1]).setAttribute("class", "Dead");
+  document.getElementById(BombArray[2]).setAttribute("class", "Dead");
+  document.getElementById(BombArray[3]).setAttribute("class", "Dead");
+  document.getElementById(BombArray[4]).setAttribute("class", "Dead");
+  document.getElementById(BombArray[5]).setAttribute("class", "Dead");
+  document.getElementById(BombArray[6]).setAttribute("class", "Dead");
+  document.getElementById(BombArray[7]).setAttribute("class", "Dead");
+  document.getElementById(BombArray[8]).setAttribute("class", "Dead");
+  document.getElementById(BombArray[9]).setAttribute("class", "Dead");
+  //console.log(bomb);
+  document.getElementsByClassName("Dead").item(0).addEventListener("click",gameover);
+  document.getElementsByClassName("Dead").item(1).addEventListener("click",gameover);
+  document.getElementsByClassName("Dead").item(2).addEventListener("click",gameover);
+  document.getElementsByClassName("Dead").item(3).addEventListener("click",gameover);
+  document.getElementsByClassName("Dead").item(4).addEventListener("click",gameover);
+  document.getElementsByClassName("Dead").item(5).addEventListener("click",gameover);
+  document.getElementsByClassName("Dead").item(6).addEventListener("click",gameover);
+  document.getElementsByClassName("Dead").item(7).addEventListener("click",gameover);
+  document.getElementsByClassName("Dead").item(8).addEventListener("click",gameover);
+  document.getElementsByClassName("Dead").item(9).addEventListener("click",gameover);
+  //console.log(document.getElementsByClassName("Dead").item(c));
+
+  //計算每個格子周圍的炸彈數量 把統計結果放入格子中的class
+  var S = []; S[0];
+  //corner 1,9,73,81
+  if(B[1].className !== "Dead"){
+    S[1] = 0 ;
+    if(document.getElementById(2).className=="Dead"){S[1]++;}
+    if(document.getElementById(10).className=="Dead"){S[1]++;}
+    if(document.getElementById(11).className=="Dead"){S[1]++;}
+    B[1].setAttribute("class" , "_" + S[1] );
+    //console.log(B[1]);
+  }//end if
+  if(B[9].className !== "Dead"){
+    S[9] = 0 ;
+    if(document.getElementById(8).className=="Dead"){S[9]++;}
+    if(document.getElementById(17).className=="Dead"){S[9]++;}
+    if(document.getElementById(18).className=="Dead"){S[9]++;}
+    B[9].setAttribute("class" , "_" + S[9] );
+  }//end if
+  if(B[73].className !== "Dead"){
+    S[73] = 0 ;
+    if(document.getElementById(74).className=="Dead"){S[73]++;}
+    if(document.getElementById(64).className=="Dead"){S[73]++;}
+    if(document.getElementById(65).className=="Dead"){S[73]++;}
+    B[73].setAttribute("class" , "_" + S[73] );
+    }//end if
+  if(B[81].className !== "Dead"){
+    S[81] = 0 ;
+    if(document.getElementById(80).className=="Dead"){S[81]++;}
+    if(document.getElementById(72).className=="Dead"){S[81]++;}
+    if(document.getElementById(71).className=="Dead"){S[81]++;}
+    B[81].setAttribute("class" , "_" + S[81] );
+  }//end if
+
+  //top Column 2,3,4,5,6,7,8
+  for(var tc=2;tc<=8;tc++){
+  if(B[tc].className !== "Dead"){
+    S[tc] = 0 ;
+    if(document.getElementById(tc-1).className=="Dead"){S[tc]++;}
+    if(document.getElementById(tc+1).className=="Dead"){S[tc]++;}
+    if(document.getElementById(tc+8).className=="Dead"){S[tc]++;}
+    if(document.getElementById(tc+9).className=="Dead"){S[tc]++;}
+    if(document.getElementById(tc+10).className=="Dead"){S[tc]++;}
+    //console.log(S[tc]);
+    B[tc].setAttribute("class" , "_" + S[tc] );
+  }//end if
+}//end for
+
+//last Column 74,75,76,77,78,79,80
+  for(var tc1=74;tc1<=80;tc1++){
+    if(B[tc1].className !== "Dead"){
+      S[tc1] = 0 ;
+      if(document.getElementById(tc1-1).className=="Dead"){S[tc1]++;}
+      if(document.getElementById(tc1+1).className=="Dead"){S[tc1]++;}
+      if(document.getElementById(tc1-8).className=="Dead"){S[tc1]++;}
+      if(document.getElementById(tc1-9).className=="Dead"){S[tc1]++;}
+      if(document.getElementById(tc1-10).className=="Dead"){S[tc1]++;}
+      B[tc1].setAttribute("class" , "_" + S[tc1] );
+    }//end if
+  }//end for
+
+//first roll 10,19,28,37,46,55,64 +1 +9 +10 -8 -9
+for(var tc2=10;tc2<=64;tc2=tc2+9){
+if(B[tc2].className !== "Dead"){
+S[tc2] = 0 ;
+if(document.getElementById(tc2+1).className=="Dead"){S[tc2]++;}
+if(document.getElementById(tc2+9).className=="Dead"){S[tc2]++;}
+if(document.getElementById(tc2+10).className=="Dead"){S[tc2]++;}
+if(document.getElementById(tc2-8).className=="Dead"){S[tc2]++;}
+if(document.getElementById(tc2-9).className=="Dead"){S[tc2]++;}
+B[tc2].setAttribute("class" , "_" + S[tc2] );
+}//end if
+}//end while
+
+//last roll 18,27,36,45,54,63,72 -1 -9 -10 +9 +8
+for(var tc3=18;tc3<73;tc3=tc3+9){
+if(B[tc3].className !== "Dead"){
+S[tc3] = 0 ;
+if(document.getElementById(tc3-1).className=="Dead"){S[tc3]++;}
+if(document.getElementById(tc3-9).className=="Dead"){S[tc3]++;}
+if(document.getElementById(tc3-10).className=="Dead"){S[tc3]++;}
+if(document.getElementById(tc3+8).className=="Dead"){S[tc3]++;}
+if(document.getElementById(tc3+9).className=="Dead"){S[tc3]++;}
+B[tc3].setAttribute("class" , "_" + S[tc3] );
+//console.log(tc3)
+}//end if
+}//end while
+
+//others 11-17 20-26 29-35 38-44 47-53 56-62 65-71 +1,-1,-10,-9,-8,+8,+9,+10
+//11-17
+for(var tc4=11;tc4<=17;tc4++){
+if(B[tc4].className !== "Dead"){
+S[tc4] = 0 ;
+if(document.getElementById(tc4+1).className=="Dead"){S[tc4]++;}
+if(document.getElementById(tc4-1).className=="Dead"){S[tc4]++;}
+if(document.getElementById(tc4-10).className=="Dead"){S[tc4]++;}
+if(document.getElementById(tc4-9).className=="Dead"){S[tc4]++;}
+if(document.getElementById(tc4-8).className=="Dead"){S[tc4]++;}
+if(document.getElementById(tc4+8).className=="Dead"){S[tc4]++;}
+if(document.getElementById(tc4+9).className=="Dead"){S[tc4]++;}
+if(document.getElementById(tc4+10).className=="Dead"){S[tc4]++;}
+B[tc4].setAttribute("class" , "_" + S[tc4] );
+}//end if
+}//end while
+//20-26
+for(var tc5=20;tc5<=26;tc5++){
+if(B[tc5].className !== "Dead"){
+S[tc5] = 0 ;
+if(document.getElementById(tc5+1).className=="Dead"){S[tc5]++;}
+if(document.getElementById(tc5-1).className=="Dead"){S[tc5]++;}
+if(document.getElementById(tc5-10).className=="Dead"){S[tc5]++;}
+if(document.getElementById(tc5-9).className=="Dead"){S[tc5]++;}
+if(document.getElementById(tc5-8).className=="Dead"){S[tc5]++;}
+if(document.getElementById(tc5+8).className=="Dead"){S[tc5]++;}
+if(document.getElementById(tc5+9).className=="Dead"){S[tc5]++;}
+if(document.getElementById(tc5+10).className=="Dead"){S[tc5]++;}
+B[tc5].setAttribute("class" , "_" + S[tc5] );
+}//end if
+}//end while
+//29-35
+for(var tc6=29;tc6<=35;tc6++){
+if(B[tc6].className !== "Dead"){
+S[tc6] = 0 ;
+if(document.getElementById(tc6+1).className=="Dead"){S[tc6]++;}
+if(document.getElementById(tc6-1).className=="Dead"){S[tc6]++;}
+if(document.getElementById(tc6-10).className=="Dead"){S[tc6]++;}
+if(document.getElementById(tc6-9).className=="Dead"){S[tc6]++;}
+if(document.getElementById(tc6-8).className=="Dead"){S[tc6]++;}
+if(document.getElementById(tc6+8).className=="Dead"){S[tc6]++;}
+if(document.getElementById(tc6+9).className=="Dead"){S[tc6]++;}
+if(document.getElementById(tc6+10).className=="Dead"){S[tc6]++;}
+B[tc6].setAttribute("class" , "_" + S[tc6] );
+}//end if
+}//end while
+//38-44
+for(var tc7=38;tc7<=44;tc7++){
+if(B[tc7].className !== "Dead"){
+S[tc7] = 0 ;
+if(document.getElementById(tc7+1).className=="Dead"){S[tc7]++;}
+if(document.getElementById(tc7-1).className=="Dead"){S[tc7]++;}
+if(document.getElementById(tc7-10).className=="Dead"){S[tc7]++;}
+if(document.getElementById(tc7-9).className=="Dead"){S[tc7]++;}
+if(document.getElementById(tc7-8).className=="Dead"){S[tc7]++;}
+if(document.getElementById(tc7+8).className=="Dead"){S[tc7]++;}
+if(document.getElementById(tc7+9).className=="Dead"){S[tc7]++;}
+if(document.getElementById(tc7+10).className=="Dead"){S[tc7]++;}
+B[tc7].setAttribute("class" , "_" + S[tc7] );
+}//end if
+}//end while
+//47-53
+for(var tc8=47;tc8<=53;tc8++){
+if(B[tc8].className !== "Dead"){
+S[tc8] = 0 ;
+if(document.getElementById(tc8+1).className=="Dead"){S[tc8]++;}
+if(document.getElementById(tc8-1).className=="Dead"){S[tc8]++;}
+if(document.getElementById(tc8-10).className=="Dead"){S[tc8]++;}
+if(document.getElementById(tc8-9).className=="Dead"){S[tc8]++;}
+if(document.getElementById(tc8-8).className=="Dead"){S[tc8]++;}
+if(document.getElementById(tc8+8).className=="Dead"){S[tc8]++;}
+if(document.getElementById(tc8+9).className=="Dead"){S[tc8]++;}
+if(document.getElementById(tc8+10).className=="Dead"){S[tc8]++;}
+B[tc8].setAttribute("class" , "_" + S[tc8] );
+}//end if
+}//end while
+//56-62
+for(var tc9=56;tc9<=62;tc9++){
+if(B[tc9].className !== "Dead"){
+S[tc9] = 0 ;
+if(document.getElementById(tc9+1).className=="Dead"){S[tc9]++;}
+if(document.getElementById(tc9-1).className=="Dead"){S[tc9]++;}
+if(document.getElementById(tc9-10).className=="Dead"){S[tc9]++;}
+if(document.getElementById(tc9-9).className=="Dead"){S[tc9]++;}
+if(document.getElementById(tc9-8).className=="Dead"){S[tc9]++;}
+if(document.getElementById(tc9+8).className=="Dead"){S[tc9]++;}
+if(document.getElementById(tc9+9).className=="Dead"){S[tc9]++;}
+if(document.getElementById(tc9+10).className=="Dead"){S[tc9]++;}
+B[tc9].setAttribute("class" , "_" + S[tc9] );
+}//end if
+}//end while
+//65-71
+for(var tc10=65;tc10<=71;tc10++){
+if(B[tc10].className !== "Dead"){
+S[tc10] = 0 ;
+if(document.getElementById(tc10+1).className=="Dead"){S[tc10]++;}
+if(document.getElementById(tc10-1).className=="Dead"){S[tc10]++;}
+if(document.getElementById(tc10-10).className=="Dead"){S[tc10]++;}
+if(document.getElementById(tc10-9).className=="Dead"){S[tc10]++;}
+if(document.getElementById(tc10-8).className=="Dead"){S[tc10]++;}
+if(document.getElementById(tc10+8).className=="Dead"){S[tc10]++;}
+if(document.getElementById(tc10+9).className=="Dead"){S[tc10]++;}
+if(document.getElementById(tc10+10).className=="Dead"){S[tc10]++;}
+B[tc10].setAttribute("class" , "_" + S[tc10] );
+}//end if
+}//end while
+
+//check upon
+//for(var b=1;b<=81;b++){
+//console.log(document.getElementById(b));
+//}//end for
+
+//除了Dead Class的格子外 在其他格子放入新的eventListener
+for(var b=1;b<=81;b++){
+if(B[b].className === "_0"){B[b].addEventListener("click",fucnC0,false)}//end if
+if(B[b].className === "_1"){B[b].addEventListener("click",C_1)}//end if
+if(B[b].className === "_2"){B[b].addEventListener("click",C_2)}//end if
+if(B[b].className === "_3"){B[b].addEventListener("click",C_3)}//end if
+if(B[b].className === "_4"){B[b].addEventListener("click",C_4)}//end if
+if(B[b].className === "_5"){B[b].addEventListener("click",C_5)}//end if
+if(B[b].className === "_6"){B[b].addEventListener("click",C_6)}//end if
+if(B[b].className === "_7"){B[b].addEventListener("click",C_7)}//end if
+if(B[b].className === "_8"){B[b].addEventListener("click",C_8)}//end if
+}//end for
+
+function in_c0(){obj.className += ( " " + "_9" );
+HowManyTimes();
+obj.removeEventListener("click",in_c0);
+obj.removeEventListener("contextmenu",funcFlag); //!!
+//check around for other blocks are also whit a className of _0
+//and make them to check around again and again , until there are no _0 blocks around
+if(obj){var ID = Number(obj.id);}
+
+//corner 1,9,73,81
+switch(B[ID].id){
+case "1" : if(B[ID+1].className==="_0"&&!(B[ID+1].className.match("_9"))){C_0(B[ID+1]);}
+if(B[ID+1].className==="_1"&&!(B[ID+1].className.match("_9"))){Z_1(B[ID+1]);}
+if(B[ID+1].className==="_2"&&!(B[ID+1].className.match("_9"))){Z_2(B[ID+1]);}
+if(B[ID+1].className==="_3"&&!(B[ID+1].className.match("_9"))){Z_3(B[ID+1]);}
+if(B[ID+1].className==="_4"&&!(B[ID+1].className.match("_9"))){Z_4(B[ID+1]);}
+if(B[ID+1].className==="_5"&&!(B[ID+1].className.match("_9"))){Z_5(B[ID+1]);}
+if(B[ID+1].className==="_6"&&!(B[ID+1].className.match("_9"))){Z_6(B[ID+1]);}
+if(B[ID+1].className==="_7"&&!(B[ID+1].className.match("_9"))){Z_7(B[ID+1]);}
+if(B[ID+1].className==="_8"&&!(B[ID+1].className.match("_9"))){Z_8(B[ID+1]);}
+
+if(B[ID+9].className==="_0"&&!(B[ID+9].className.match("_9"))){C_0(B[ID+9]);}
+if(B[ID+9].className==="_1"&&!(B[ID+9].className.match("_9"))){Z_1(B[ID+9]);}
+if(B[ID+9].className==="_2"&&!(B[ID+9].className.match("_9"))){Z_2(B[ID+9]);}
+if(B[ID+9].className==="_3"&&!(B[ID+9].className.match("_9"))){Z_3(B[ID+9]);}
+if(B[ID+9].className==="_4"&&!(B[ID+9].className.match("_9"))){Z_4(B[ID+9]);}
+if(B[ID+9].className==="_5"&&!(B[ID+9].className.match("_9"))){Z_5(B[ID+9]);}
+if(B[ID+9].className==="_6"&&!(B[ID+9].className.match("_9"))){Z_6(B[ID+9]);}
+if(B[ID+9].className==="_7"&&!(B[ID+9].className.match("_9"))){Z_7(B[ID+9]);}
+if(B[ID+9].className==="_8"&&!(B[ID+9].className.match("_9"))){Z_8(B[ID+9]);}
+
+if(B[ID+10].className==="_0"&&!(B[ID+10].className.match("_9"))){C_0(B[ID+10]);}
+if(B[ID+10].className==="_1"&&!(B[ID+10].className.match("_9"))){Z_1(B[ID+10]);}
+if(B[ID+10].className==="_2"&&!(B[ID+10].className.match("_9"))){Z_2(B[ID+10]);}
+if(B[ID+10].className==="_3"&&!(B[ID+10].className.match("_9"))){Z_3(B[ID+10]);}
+if(B[ID+10].className==="_4"&&!(B[ID+10].className.match("_9"))){Z_4(B[ID+10]);}
+if(B[ID+10].className==="_5"&&!(B[ID+10].className.match("_9"))){Z_5(B[ID+10]);}
+if(B[ID+10].className==="_6"&&!(B[ID+10].className.match("_9"))){Z_6(B[ID+10]);}
+if(B[ID+10].className==="_7"&&!(B[ID+10].className.match("_9"))){Z_7(B[ID+10]);}
+if(B[ID+10].className==="_8"&&!(B[ID+10].className.match("_9"))){Z_8(B[ID+10]);}
+break;
+case "9" : if(B[ID-1].className==="_0"&&!(B[ID-1].className.match("_9"))){C_0(B[ID-1]);}
+if(B[ID-1].className==="_1"&&!(B[ID-1].className.match("_9"))){Z_1(B[ID-1]);}
+if(B[ID-1].className==="_2"&&!(B[ID-1].className.match("_9"))){Z_2(B[ID-1]);}
+if(B[ID-1].className==="_3"&&!(B[ID-1].className.match("_9"))){Z_3(B[ID-1]);}
+if(B[ID-1].className==="_4"&&!(B[ID-1].className.match("_9"))){Z_4(B[ID-1]);}
+if(B[ID-1].className==="_5"&&!(B[ID-1].className.match("_9"))){Z_5(B[ID-1]);}
+if(B[ID-1].className==="_6"&&!(B[ID-1].className.match("_9"))){Z_6(B[ID-1]);}
+if(B[ID-1].className==="_7"&&!(B[ID-1].className.match("_9"))){Z_7(B[ID-1]);}
+if(B[ID-1].className==="_8"&&!(B[ID-1].className.match("_9"))){Z_8(B[ID-1]);}
+
+if(B[ID+8].className==="_0"&&!(B[ID+8].className.match("_9"))){C_0(B[ID+8]);}
+if(B[ID+8].className==="_1"&&!(B[ID+8].className.match("_9"))){Z_1(B[ID+8]);}
+if(B[ID+8].className==="_2"&&!(B[ID+8].className.match("_9"))){Z_2(B[ID+8]);}
+if(B[ID+8].className==="_3"&&!(B[ID+8].className.match("_9"))){Z_3(B[ID+8]);}
+if(B[ID+8].className==="_4"&&!(B[ID+8].className.match("_9"))){Z_4(B[ID+8]);}
+if(B[ID+8].className==="_5"&&!(B[ID+8].className.match("_9"))){Z_5(B[ID+8]);}
+if(B[ID+8].className==="_6"&&!(B[ID+8].className.match("_9"))){Z_6(B[ID+8]);}
+if(B[ID+8].className==="_7"&&!(B[ID+8].className.match("_9"))){Z_7(B[ID+8]);}
+if(B[ID+8].className==="_8"&&!(B[ID+8].className.match("_9"))){Z_8(B[ID+8]);}
+
+if(B[ID+9].className==="_0"&&!(B[ID+9].className.match("_9"))){C_0(B[ID+9]);}
+if(B[ID+9].className==="_1"&&!(B[ID+9].className.match("_9"))){Z_1(B[ID+9]);}
+if(B[ID+9].className==="_2"&&!(B[ID+9].className.match("_9"))){Z_2(B[ID+9]);}
+if(B[ID+9].className==="_3"&&!(B[ID+9].className.match("_9"))){Z_3(B[ID+9]);}
+if(B[ID+9].className==="_4"&&!(B[ID+9].className.match("_9"))){Z_4(B[ID+9]);}
+if(B[ID+9].className==="_5"&&!(B[ID+9].className.match("_9"))){Z_5(B[ID+9]);}
+if(B[ID+9].className==="_6"&&!(B[ID+9].className.match("_9"))){Z_6(B[ID+9]);}
+if(B[ID+9].className==="_7"&&!(B[ID+9].className.match("_9"))){Z_7(B[ID+9]);}
+if(B[ID+9].className==="_8"&&!(B[ID+9].className.match("_9"))){Z_8(B[ID+9]);}
+break;
+//!
+case "73" : if(B[ID+1].className==="_0"&&!(B[ID+1].className.match("_9"))){C_0(B[ID+1]);}
+if(B[ID+1].className==="_1"&&!(B[ID+1].className.match("_9"))){Z_1(B[ID+1]);}
+if(B[ID+1].className==="_2"&&!(B[ID+1].className.match("_9"))){Z_2(B[ID+1]);}
+if(B[ID+1].className==="_3"&&!(B[ID+1].className.match("_9"))){Z_3(B[ID+1]);}
+if(B[ID+1].className==="_4"&&!(B[ID+1].className.match("_9"))){Z_4(B[ID+1]);}
+if(B[ID+1].className==="_5"&&!(B[ID+1].className.match("_9"))){Z_5(B[ID+1]);}
+if(B[ID+1].className==="_6"&&!(B[ID+1].className.match("_9"))){Z_6(B[ID+1]);}
+if(B[ID+1].className==="_7"&&!(B[ID+1].className.match("_9"))){Z_7(B[ID+1]);}
+if(B[ID+1].className==="_8"&&!(B[ID+1].className.match("_9"))){Z_8(B[ID+1]);}
+
+if(B[ID-8].className==="_0"&&!(B[ID-8].className.match("_9"))){C_0(B[ID-8]);}
+if(B[ID-8].className==="_1"&&!(B[ID-8].className.match("_9"))){Z_1(B[ID-8]);}
+if(B[ID-8].className==="_2"&&!(B[ID-8].className.match("_9"))){Z_2(B[ID-8]);}
+if(B[ID-8].className==="_3"&&!(B[ID-8].className.match("_9"))){Z_3(B[ID-8]);}
+if(B[ID-8].className==="_4"&&!(B[ID-8].className.match("_9"))){Z_4(B[ID-8]);}
+if(B[ID-8].className==="_5"&&!(B[ID-8].className.match("_9"))){Z_5(B[ID-8]);}
+if(B[ID-8].className==="_6"&&!(B[ID-8].className.match("_9"))){Z_6(B[ID-8]);}
+if(B[ID-8].className==="_7"&&!(B[ID-8].className.match("_9"))){Z_7(B[ID-8]);}
+if(B[ID-8].className==="_8"&&!(B[ID-8].className.match("_9"))){Z_8(B[ID-8]);}
+
+if(B[ID-9].className==="_0"&&!(B[ID-9].className.match("_9"))){C_0(B[ID-9]);}
+if(B[ID-9].className==="_1"&&!(B[ID-9].className.match("_9"))){Z_1(B[ID-9]);}
+if(B[ID-9].className==="_2"&&!(B[ID-9].className.match("_9"))){Z_2(B[ID-9]);}
+if(B[ID-9].className==="_3"&&!(B[ID-9].className.match("_9"))){Z_3(B[ID-9]);}
+if(B[ID-9].className==="_4"&&!(B[ID-9].className.match("_9"))){Z_4(B[ID-9]);}
+if(B[ID-9].className==="_5"&&!(B[ID-9].className.match("_9"))){Z_5(B[ID-9]);}
+if(B[ID-9].className==="_6"&&!(B[ID-9].className.match("_9"))){Z_6(B[ID-9]);}
+if(B[ID-9].className==="_7"&&!(B[ID-9].className.match("_9"))){Z_7(B[ID-9]);}
+if(B[ID-9].className==="_8"&&!(B[ID-9].className.match("_9"))){Z_8(B[ID-9]);}
+break;
+
+case "81" :
+if(B[ID-1].className==="_0"&&!(B[ID-1].className.match("_9"))){C_0(B[ID-1]);}
+if(B[ID-1].className==="_1"&&!(B[ID-1].className.match("_9"))){Z_1(B[ID-1]);}
+if(B[ID-1].className==="_2"&&!(B[ID-1].className.match("_9"))){Z_2(B[ID-1]);}
+if(B[ID-1].className==="_3"&&!(B[ID-1].className.match("_9"))){Z_3(B[ID-1]);}
+if(B[ID-1].className==="_4"&&!(B[ID-1].className.match("_9"))){Z_4(B[ID-1]);}
+if(B[ID-1].className==="_5"&&!(B[ID-1].className.match("_9"))){Z_5(B[ID-1]);}
+if(B[ID-1].className==="_6"&&!(B[ID-1].className.match("_9"))){Z_6(B[ID-1]);}
+if(B[ID-1].className==="_7"&&!(B[ID-1].className.match("_9"))){Z_7(B[ID-1]);}
+if(B[ID-1].className==="_8"&&!(B[ID-1].className.match("_9"))){Z_8(B[ID-1]);}
+
+if(B[ID-9].className==="_0"&&!(B[ID-9].className.match("_9"))){C_0(B[ID-9]);}
+if(B[ID-9].className==="_1"&&!(B[ID-9].className.match("_9"))){Z_1(B[ID-9]);}
+if(B[ID-9].className==="_2"&&!(B[ID-9].className.match("_9"))){Z_2(B[ID-9]);}
+if(B[ID-9].className==="_3"&&!(B[ID-9].className.match("_9"))){Z_3(B[ID-9]);}
+if(B[ID-9].className==="_4"&&!(B[ID-9].className.match("_9"))){Z_4(B[ID-9]);}
+if(B[ID-9].className==="_5"&&!(B[ID-9].className.match("_9"))){Z_5(B[ID-9]);}
+if(B[ID-9].className==="_6"&&!(B[ID-9].className.match("_9"))){Z_6(B[ID-9]);}
+if(B[ID-9].className==="_7"&&!(B[ID-9].className.match("_9"))){Z_7(B[ID-9]);}
+if(B[ID-9].className==="_8"&&!(B[ID-9].className.match("_9"))){Z_8(B[ID-9]);}
+
+if(B[ID-10].className==="_0"&&!(B[ID-10].className.match("_9"))){C_0(B[ID-10]);}
+if(B[ID-10].className==="_1"&&!(B[ID-10].className.match("_9"))){Z_1(B[ID-10]);}
+if(B[ID-10].className==="_2"&&!(B[ID-10].className.match("_9"))){Z_2(B[ID-10]);}
+if(B[ID-10].className==="_3"&&!(B[ID-10].className.match("_9"))){Z_3(B[ID-10]);}
+if(B[ID-10].className==="_4"&&!(B[ID-10].className.match("_9"))){Z_4(B[ID-10]);}
+if(B[ID-10].className==="_5"&&!(B[ID-10].className.match("_9"))){Z_5(B[ID-10]);}
+if(B[ID-10].className==="_6"&&!(B[ID-10].className.match("_9"))){Z_6(B[ID-10]);}
+if(B[ID-10].className==="_7"&&!(B[ID-10].className.match("_9"))){Z_7(B[ID-10]);}
+if(B[ID-10].className==="_8"&&!(B[ID-10].className.match("_9"))){Z_8(B[ID-10]);}
+break;
+}//end switch
+
+//top Column 2,3,4,5,6,7,8 -1,+1,+8,+9,+10
+switch(B[ID].id){
+case "2" :
+case "3" :
+case "4" :
+case "5" :
+case "6" :
+case "7" :
+case "8" :
+if(B[ID-1].className==="_0"&&!(B[ID-1].className.match("_9"))){C_0(B[ID-1]);}
+if(B[ID-1].className==="_1"&&!(B[ID-1].className.match("_9"))){Z_1(B[ID-1]);}
+if(B[ID-1].className==="_2"&&!(B[ID-1].className.match("_9"))){Z_2(B[ID-1]);}
+if(B[ID-1].className==="_3"&&!(B[ID-1].className.match("_9"))){Z_3(B[ID-1]);}
+if(B[ID-1].className==="_4"&&!(B[ID-1].className.match("_9"))){Z_4(B[ID-1]);}
+if(B[ID-1].className==="_5"&&!(B[ID-1].className.match("_9"))){Z_5(B[ID-1]);}
+if(B[ID-1].className==="_6"&&!(B[ID-1].className.match("_9"))){Z_6(B[ID-1]);}
+if(B[ID-1].className==="_7"&&!(B[ID-1].className.match("_9"))){Z_7(B[ID-1]);}
+if(B[ID-1].className==="_8"&&!(B[ID-1].className.match("_9"))){Z_8(B[ID-1]);}
+
+if(B[ID+1].className==="_0"&&!(B[ID+1].className.match("_9"))){C_0(B[ID+1]);}
+if(B[ID+1].className==="_1"&&!(B[ID+1].className.match("_9"))){Z_1(B[ID+1]);}
+if(B[ID+1].className==="_2"&&!(B[ID+1].className.match("_9"))){Z_2(B[ID+1]);}
+if(B[ID+1].className==="_3"&&!(B[ID+1].className.match("_9"))){Z_3(B[ID+1]);}
+if(B[ID+1].className==="_4"&&!(B[ID+1].className.match("_9"))){Z_4(B[ID+1]);}
+if(B[ID+1].className==="_5"&&!(B[ID+1].className.match("_9"))){Z_5(B[ID+1]);}
+if(B[ID+1].className==="_6"&&!(B[ID+1].className.match("_9"))){Z_6(B[ID+1]);}
+if(B[ID+1].className==="_7"&&!(B[ID+1].className.match("_9"))){Z_7(B[ID+1]);}
+if(B[ID+1].className==="_8"&&!(B[ID+1].className.match("_9"))){Z_8(B[ID+1]);}
+
+if(B[ID+8].className==="_0"&&!(B[ID+8].className.match("_9"))){C_0(B[ID+8]);}
+if(B[ID+8].className==="_1"&&!(B[ID+8].className.match("_9"))){Z_1(B[ID+8]);}
+if(B[ID+8].className==="_2"&&!(B[ID+8].className.match("_9"))){Z_2(B[ID+8]);}
+if(B[ID+8].className==="_3"&&!(B[ID+8].className.match("_9"))){Z_3(B[ID+8]);}
+if(B[ID+8].className==="_4"&&!(B[ID+8].className.match("_9"))){Z_4(B[ID+8]);}
+if(B[ID+8].className==="_5"&&!(B[ID+8].className.match("_9"))){Z_5(B[ID+8]);}
+if(B[ID+8].className==="_6"&&!(B[ID+8].className.match("_9"))){Z_6(B[ID+8]);}
+if(B[ID+8].className==="_7"&&!(B[ID+8].className.match("_9"))){Z_7(B[ID+8]);}
+if(B[ID+8].className==="_8"&&!(B[ID+8].className.match("_9"))){Z_8(B[ID+8]);}
+
+if(B[ID+9].className==="_0"&&!(B[ID+9].className.match("_9"))){C_0(B[ID+9]);}
+if(B[ID+9].className==="_1"&&!(B[ID+9].className.match("_9"))){Z_1(B[ID+9]);}
+if(B[ID+9].className==="_2"&&!(B[ID+9].className.match("_9"))){Z_2(B[ID+9]);}
+if(B[ID+9].className==="_3"&&!(B[ID+9].className.match("_9"))){Z_3(B[ID+9]);}
+if(B[ID+9].className==="_4"&&!(B[ID+9].className.match("_9"))){Z_4(B[ID+9]);}
+if(B[ID+9].className==="_5"&&!(B[ID+9].className.match("_9"))){Z_5(B[ID+9]);}
+if(B[ID+9].className==="_6"&&!(B[ID+9].className.match("_9"))){Z_6(B[ID+9]);}
+if(B[ID+9].className==="_7"&&!(B[ID+9].className.match("_9"))){Z_7(B[ID+9]);}
+if(B[ID+9].className==="_8"&&!(B[ID+9].className.match("_9"))){Z_8(B[ID+9]);}
+
+if(B[ID+10].className==="_0"&&!(B[ID+10].className.match("_9"))){C_0(B[ID+10]);}
+if(B[ID+10].className==="_1"&&!(B[ID+10].className.match("_9"))){Z_1(B[ID+10]);}
+if(B[ID+10].className==="_2"&&!(B[ID+10].className.match("_9"))){Z_2(B[ID+10]);}
+if(B[ID+10].className==="_3"&&!(B[ID+10].className.match("_9"))){Z_3(B[ID+10]);}
+if(B[ID+10].className==="_4"&&!(B[ID+10].className.match("_9"))){Z_4(B[ID+10]);}
+if(B[ID+10].className==="_5"&&!(B[ID+10].className.match("_9"))){Z_5(B[ID+10]);}
+if(B[ID+10].className==="_6"&&!(B[ID+10].className.match("_9"))){Z_6(B[ID+10]);}
+if(B[ID+10].className==="_7"&&!(B[ID+10].className.match("_9"))){Z_7(B[ID+10]);}
+if(B[ID+10].className==="_8"&&!(B[ID+10].className.match("_9"))){Z_8(B[ID+10]);}
+break;
+}//end switch
+
+//last Column 74,75,76,77,78,79,80 -1,+1,-8,-9,-10
+switch(B[ID].id){
+case "74" :
+case "75" :
+case "76" :
+case "77" :
+case "78" :
+case "79" :
+case "80" :
+if(B[ID-1].className==="_0"&&!(B[ID-1].className.match("_9"))){C_0(B[ID-1]);}
+if(B[ID-1].className==="_1"&&!(B[ID-1].className.match("_9"))){Z_1(B[ID-1]);}
+if(B[ID-1].className==="_2"&&!(B[ID-1].className.match("_9"))){Z_2(B[ID-1]);}
+if(B[ID-1].className==="_3"&&!(B[ID-1].className.match("_9"))){Z_3(B[ID-1]);}
+if(B[ID-1].className==="_4"&&!(B[ID-1].className.match("_9"))){Z_4(B[ID-1]);}
+if(B[ID-1].className==="_5"&&!(B[ID-1].className.match("_9"))){Z_5(B[ID-1]);}
+if(B[ID-1].className==="_6"&&!(B[ID-1].className.match("_9"))){Z_6(B[ID-1]);}
+if(B[ID-1].className==="_7"&&!(B[ID-1].className.match("_9"))){Z_7(B[ID-1]);}
+if(B[ID-1].className==="_8"&&!(B[ID-1].className.match("_9"))){Z_8(B[ID-1]);}
+
+if(B[ID+1].className==="_0"&&!(B[ID+1].className.match("_9"))){C_0(B[ID+1]);}
+if(B[ID+1].className==="_1"&&!(B[ID+1].className.match("_9"))){Z_1(B[ID+1]);}
+if(B[ID+1].className==="_2"&&!(B[ID+1].className.match("_9"))){Z_2(B[ID+1]);}
+if(B[ID+1].className==="_3"&&!(B[ID+1].className.match("_9"))){Z_3(B[ID+1]);}
+if(B[ID+1].className==="_4"&&!(B[ID+1].className.match("_9"))){Z_4(B[ID+1]);}
+if(B[ID+1].className==="_5"&&!(B[ID+1].className.match("_9"))){Z_5(B[ID+1]);}
+if(B[ID+1].className==="_6"&&!(B[ID+1].className.match("_9"))){Z_6(B[ID+1]);}
+if(B[ID+1].className==="_7"&&!(B[ID+1].className.match("_9"))){Z_7(B[ID+1]);}
+if(B[ID+1].className==="_8"&&!(B[ID+1].className.match("_9"))){Z_8(B[ID+1]);}
+
+if(B[ID-8].className==="_0"&&!(B[ID-8].className.match("_9"))){C_0(B[ID-8]);}
+if(B[ID-8].className==="_1"&&!(B[ID-8].className.match("_9"))){Z_1(B[ID-8]);}
+if(B[ID-8].className==="_2"&&!(B[ID-8].className.match("_9"))){Z_2(B[ID-8]);}
+if(B[ID-8].className==="_3"&&!(B[ID-8].className.match("_9"))){Z_3(B[ID-8]);}
+if(B[ID-8].className==="_4"&&!(B[ID-8].className.match("_9"))){Z_4(B[ID-8]);}
+if(B[ID-8].className==="_5"&&!(B[ID-8].className.match("_9"))){Z_5(B[ID-8]);}
+if(B[ID-8].className==="_6"&&!(B[ID-8].className.match("_9"))){Z_6(B[ID-8]);}
+if(B[ID-8].className==="_7"&&!(B[ID-8].className.match("_9"))){Z_7(B[ID-8]);}
+if(B[ID-8].className==="_8"&&!(B[ID-8].className.match("_9"))){Z_8(B[ID-8]);}
+
+if(B[ID-9].className==="_0"&&!(B[ID-9].className.match("_9"))){C_0(B[ID-9]);}
+if(B[ID-9].className==="_1"&&!(B[ID-9].className.match("_9"))){Z_1(B[ID-9]);}
+if(B[ID-9].className==="_2"&&!(B[ID-9].className.match("_9"))){Z_2(B[ID-9]);}
+if(B[ID-9].className==="_3"&&!(B[ID-9].className.match("_9"))){Z_3(B[ID-9]);}
+if(B[ID-9].className==="_4"&&!(B[ID-9].className.match("_9"))){Z_4(B[ID-9]);}
+if(B[ID-9].className==="_5"&&!(B[ID-9].className.match("_9"))){Z_5(B[ID-9]);}
+if(B[ID-9].className==="_6"&&!(B[ID-9].className.match("_9"))){Z_6(B[ID-9]);}
+if(B[ID-9].className==="_7"&&!(B[ID-9].className.match("_9"))){Z_7(B[ID-9]);}
+if(B[ID-9].className==="_8"&&!(B[ID-9].className.match("_9"))){Z_8(B[ID-9]);}
+
+if(B[ID-10].className==="_0"&&!(B[ID-10].className.match("_9"))){C_0(B[ID-10]);}
+if(B[ID-10].className==="_1"&&!(B[ID-10].className.match("_9"))){Z_1(B[ID-10]);}
+if(B[ID-10].className==="_2"&&!(B[ID-10].className.match("_9"))){Z_2(B[ID-10]);}
+if(B[ID-10].className==="_3"&&!(B[ID-10].className.match("_9"))){Z_3(B[ID-10]);}
+if(B[ID-10].className==="_4"&&!(B[ID-10].className.match("_9"))){Z_4(B[ID-10]);}
+if(B[ID-10].className==="_5"&&!(B[ID-10].className.match("_9"))){Z_5(B[ID-10]);}
+if(B[ID-10].className==="_6"&&!(B[ID-10].className.match("_9"))){Z_6(B[ID-10]);}
+if(B[ID-10].className==="_7"&&!(B[ID-10].className.match("_9"))){Z_7(B[ID-10]);}
+if(B[ID-10].className==="_8"&&!(B[ID-10].className.match("_9"))){Z_8(B[ID-10]);}
+break;
+}//end switch
+
+//first roll 10,19,28,37,46,55,64 +1 +9 +10 -8 -9
+switch(B[ID].id){
+case "10" :
+case "19" :
+case "28" :
+case "37" :
+case "46" :
+case "55" :
+case "64" :
+if(B[ID+1].className==="_0"&&!(B[ID+1].className.match("_9"))){C_0(B[ID+1]);}
+if(B[ID+1].className==="_1"&&!(B[ID+1].className.match("_9"))){Z_1(B[ID+1]);}
+if(B[ID+1].className==="_2"&&!(B[ID+1].className.match("_9"))){Z_2(B[ID+1]);}
+if(B[ID+1].className==="_3"&&!(B[ID+1].className.match("_9"))){Z_3(B[ID+1]);}
+if(B[ID+1].className==="_4"&&!(B[ID+1].className.match("_9"))){Z_4(B[ID+1]);}
+if(B[ID+1].className==="_5"&&!(B[ID+1].className.match("_9"))){Z_5(B[ID+1]);}
+if(B[ID+1].className==="_6"&&!(B[ID+1].className.match("_9"))){Z_6(B[ID+1]);}
+if(B[ID+1].className==="_7"&&!(B[ID+1].className.match("_9"))){Z_7(B[ID+1]);}
+if(B[ID+1].className==="_8"&&!(B[ID+1].className.match("_9"))){Z_8(B[ID+1]);}
+
+if(B[ID+9].className==="_0"&&!(B[ID+9].className.match("_9"))){C_0(B[ID+9]);}
+if(B[ID+9].className==="_1"&&!(B[ID+9].className.match("_9"))){Z_1(B[ID+9]);}
+if(B[ID+9].className==="_2"&&!(B[ID+9].className.match("_9"))){Z_2(B[ID+9]);}
+if(B[ID+9].className==="_3"&&!(B[ID+9].className.match("_9"))){Z_3(B[ID+9]);}
+if(B[ID+9].className==="_4"&&!(B[ID+9].className.match("_9"))){Z_4(B[ID+9]);}
+if(B[ID+9].className==="_5"&&!(B[ID+9].className.match("_9"))){Z_5(B[ID+9]);}
+if(B[ID+9].className==="_6"&&!(B[ID+9].className.match("_9"))){Z_6(B[ID+9]);}
+if(B[ID+9].className==="_7"&&!(B[ID+9].className.match("_9"))){Z_7(B[ID+9]);}
+if(B[ID+9].className==="_8"&&!(B[ID+9].className.match("_9"))){Z_8(B[ID+9]);}
+
+if(B[ID+10].className==="_0"&&!(B[ID+10].className.match("_9"))){C_0(B[ID+10]);}
+if(B[ID+10].className==="_1"&&!(B[ID+10].className.match("_9"))){Z_1(B[ID+10]);}
+if(B[ID+10].className==="_2"&&!(B[ID+10].className.match("_9"))){Z_2(B[ID+10]);}
+if(B[ID+10].className==="_3"&&!(B[ID+10].className.match("_9"))){Z_3(B[ID+10]);}
+if(B[ID+10].className==="_4"&&!(B[ID+10].className.match("_9"))){Z_4(B[ID+10]);}
+if(B[ID+10].className==="_5"&&!(B[ID+10].className.match("_9"))){Z_5(B[ID+10]);}
+if(B[ID+10].className==="_6"&&!(B[ID+10].className.match("_9"))){Z_6(B[ID+10]);}
+if(B[ID+10].className==="_7"&&!(B[ID+10].className.match("_9"))){Z_7(B[ID+10]);}
+if(B[ID+10].className==="_8"&&!(B[ID+10].className.match("_9"))){Z_8(B[ID+10]);}
+
+if(B[ID-8].className==="_0"&&!(B[ID-8].className.match("_9"))){C_0(B[ID-8]);}
+if(B[ID-8].className==="_1"&&!(B[ID-8].className.match("_9"))){Z_1(B[ID-8]);}
+if(B[ID-8].className==="_2"&&!(B[ID-8].className.match("_9"))){Z_2(B[ID-8]);}
+if(B[ID-8].className==="_3"&&!(B[ID-8].className.match("_9"))){Z_3(B[ID-8]);}
+if(B[ID-8].className==="_4"&&!(B[ID-8].className.match("_9"))){Z_4(B[ID-8]);}
+if(B[ID-8].className==="_5"&&!(B[ID-8].className.match("_9"))){Z_5(B[ID-8]);}
+if(B[ID-8].className==="_6"&&!(B[ID-8].className.match("_9"))){Z_6(B[ID-8]);}
+if(B[ID-8].className==="_7"&&!(B[ID-8].className.match("_9"))){Z_7(B[ID-8]);}
+if(B[ID-8].className==="_8"&&!(B[ID-8].className.match("_9"))){Z_8(B[ID-8]);}
+
+if(B[ID-9].className==="_0"&&!(B[ID-9].className.match("_9"))){C_0(B[ID-9]);}
+if(B[ID-9].className==="_1"&&!(B[ID-9].className.match("_9"))){Z_1(B[ID-9]);}
+if(B[ID-9].className==="_2"&&!(B[ID-9].className.match("_9"))){Z_2(B[ID-9]);}
+if(B[ID-9].className==="_3"&&!(B[ID-9].className.match("_9"))){Z_3(B[ID-9]);}
+if(B[ID-9].className==="_4"&&!(B[ID-9].className.match("_9"))){Z_4(B[ID-9]);}
+if(B[ID-9].className==="_5"&&!(B[ID-9].className.match("_9"))){Z_5(B[ID-9]);}
+if(B[ID-9].className==="_6"&&!(B[ID-9].className.match("_9"))){Z_6(B[ID-9]);}
+if(B[ID-9].className==="_7"&&!(B[ID-9].className.match("_9"))){Z_7(B[ID-9]);}
+if(B[ID-9].className==="_8"&&!(B[ID-9].className.match("_9"))){Z_8(B[ID-9]);}
+break;
+}//end switch
+
+//last roll 18,27,36,45,54,63,72 -1 -9 -10 +9 +8
+switch(B[ID].id){
+case "18" :
+case "27" :
+case "36" :
+case "45" :
+case "54" :
+case "63" :
+case "72" :
+if(B[ID-1].className==="_0"&&!(B[ID-1].className.match("_9"))){C_0(B[ID-1]);}
+if(B[ID-1].className==="_1"&&!(B[ID-1].className.match("_9"))){Z_1(B[ID-1]);}
+if(B[ID-1].className==="_2"&&!(B[ID-1].className.match("_9"))){Z_2(B[ID-1]);}
+if(B[ID-1].className==="_3"&&!(B[ID-1].className.match("_9"))){Z_3(B[ID-1]);}
+if(B[ID-1].className==="_4"&&!(B[ID-1].className.match("_9"))){Z_4(B[ID-1]);}
+if(B[ID-1].className==="_5"&&!(B[ID-1].className.match("_9"))){Z_5(B[ID-1]);}
+if(B[ID-1].className==="_6"&&!(B[ID-1].className.match("_9"))){Z_6(B[ID-1]);}
+if(B[ID-1].className==="_7"&&!(B[ID-1].className.match("_9"))){Z_7(B[ID-1]);}
+if(B[ID-1].className==="_8"&&!(B[ID-1].className.match("_9"))){Z_8(B[ID-1]);}
+
+if(B[ID-9].className==="_0"&&!(B[ID-9].className.match("_9"))){C_0(B[ID-9]);}
+if(B[ID-9].className==="_1"&&!(B[ID-9].className.match("_9"))){Z_1(B[ID-9]);}
+if(B[ID-9].className==="_2"&&!(B[ID-9].className.match("_9"))){Z_2(B[ID-9]);}
+if(B[ID-9].className==="_3"&&!(B[ID-9].className.match("_9"))){Z_3(B[ID-9]);}
+if(B[ID-9].className==="_4"&&!(B[ID-9].className.match("_9"))){Z_4(B[ID-9]);}
+if(B[ID-9].className==="_5"&&!(B[ID-9].className.match("_9"))){Z_5(B[ID-9]);}
+if(B[ID-9].className==="_6"&&!(B[ID-9].className.match("_9"))){Z_6(B[ID-9]);}
+if(B[ID-9].className==="_7"&&!(B[ID-9].className.match("_9"))){Z_7(B[ID-9]);}
+if(B[ID-9].className==="_8"&&!(B[ID-9].className.match("_9"))){Z_8(B[ID-9]);}
+
+if(B[ID-10].className==="_0"&&!(B[ID-10].className.match("_9"))){C_0(B[ID-10]);}
+if(B[ID-10].className==="_1"&&!(B[ID-10].className.match("_9"))){Z_1(B[ID-10]);}
+if(B[ID-10].className==="_2"&&!(B[ID-10].className.match("_9"))){Z_2(B[ID-10]);}
+if(B[ID-10].className==="_3"&&!(B[ID-10].className.match("_9"))){Z_3(B[ID-10]);}
+if(B[ID-10].className==="_4"&&!(B[ID-10].className.match("_9"))){Z_4(B[ID-10]);}
+if(B[ID-10].className==="_5"&&!(B[ID-10].className.match("_9"))){Z_5(B[ID-10]);}
+if(B[ID-10].className==="_6"&&!(B[ID-10].className.match("_9"))){Z_6(B[ID-10]);}
+if(B[ID-10].className==="_7"&&!(B[ID-10].className.match("_9"))){Z_7(B[ID-10]);}
+if(B[ID-10].className==="_8"&&!(B[ID-10].className.match("_9"))){Z_8(B[ID-10]);}
+
+if(B[ID+8].className==="_0"&&!(B[ID+8].className.match("_9"))){C_0(B[ID+8]);}
+if(B[ID+8].className==="_1"&&!(B[ID+8].className.match("_9"))){Z_1(B[ID+8]);}
+if(B[ID+8].className==="_2"&&!(B[ID+8].className.match("_9"))){Z_2(B[ID+8]);}
+if(B[ID+8].className==="_3"&&!(B[ID+8].className.match("_9"))){Z_3(B[ID+8]);}
+if(B[ID+8].className==="_4"&&!(B[ID+8].className.match("_9"))){Z_4(B[ID+8]);}
+if(B[ID+8].className==="_5"&&!(B[ID+8].className.match("_9"))){Z_5(B[ID+8]);}
+if(B[ID+8].className==="_6"&&!(B[ID+8].className.match("_9"))){Z_6(B[ID+8]);}
+if(B[ID+8].className==="_7"&&!(B[ID+8].className.match("_9"))){Z_7(B[ID+8]);}
+if(B[ID+8].className==="_8"&&!(B[ID+8].className.match("_9"))){Z_8(B[ID+8]);}
+
+if(B[ID+9].className==="_0"&&!(B[ID+9].className.match("_9"))){C_0(B[ID+9]);}
+if(B[ID+9].className==="_1"&&!(B[ID+9].className.match("_9"))){Z_1(B[ID+9]);}
+if(B[ID+9].className==="_2"&&!(B[ID+9].className.match("_9"))){Z_2(B[ID+9]);}
+if(B[ID+9].className==="_3"&&!(B[ID+9].className.match("_9"))){Z_3(B[ID+9]);}
+if(B[ID+9].className==="_4"&&!(B[ID+9].className.match("_9"))){Z_4(B[ID+9]);}
+if(B[ID+9].className==="_5"&&!(B[ID+9].className.match("_9"))){Z_5(B[ID+9]);}
+if(B[ID+9].className==="_6"&&!(B[ID+9].className.match("_9"))){Z_6(B[ID+9]);}
+if(B[ID+9].className==="_7"&&!(B[ID+9].className.match("_9"))){Z_7(B[ID+9]);}
+if(B[ID+9].className==="_8"&&!(B[ID+9].className.match("_9"))){Z_8(B[ID+9]);}
+break;
+}//end switch
+
+//others 11-17 20-26 29-35 38-44 47-53 56-62 65-71 +1,-1,-10,-9,-8,+8,+9,+10
+//11-17
+switch(B[ID].id){
+case "11" :
+case "12" :
+case "13" :
+case "14" :
+case "15" :
+case "16" :
+case "17" :
+//20-26
+case "20" :
+case "21" :
+case "22" :
+case "23" :
+case "24" :
+case "25" :
+case "26" :
+//29-35
+case "29" :
+case "30" :
+case "31" :
+case "32" :
+case "33" :
+case "34" :
+case "35" :
+//38-44
+case "38" :
+case "39" :
+case "40" :
+case "41" :
+case "42" :
+case "43" :
+case "44" :
+//47-53
+case "47" :
+case "48" :
+case "49" :
+case "50" :
+case "51" :
+case "52" :
+case "53" :
+case "56" :
+//56-62
+case "57" :
+case "58" :
+case "59" :
+case "60" :
+case "61" :
+case "62" :
+//65-71
+case "65" :
+case "66" :
+case "67" :
+case "68" :
+case "69" :
+case "70" :
+case "71" :
+if(B[ID-1].className==="_0"&&!(B[ID-1].className.match("_9"))){C_0(B[ID-1]);}
+if(B[ID-1].className==="_1"&&!(B[ID-1].className.match("_9"))){Z_1(B[ID-1]);}
+if(B[ID-1].className==="_2"&&!(B[ID-1].className.match("_9"))){Z_2(B[ID-1]);}
+if(B[ID-1].className==="_3"&&!(B[ID-1].className.match("_9"))){Z_3(B[ID-1]);}
+if(B[ID-1].className==="_4"&&!(B[ID-1].className.match("_9"))){Z_4(B[ID-1]);}
+if(B[ID-1].className==="_5"&&!(B[ID-1].className.match("_9"))){Z_5(B[ID-1]);}
+if(B[ID-1].className==="_6"&&!(B[ID-1].className.match("_9"))){Z_6(B[ID-1]);}
+if(B[ID-1].className==="_7"&&!(B[ID-1].className.match("_9"))){Z_7(B[ID-1]);}
+if(B[ID-1].className==="_8"&&!(B[ID-1].className.match("_9"))){Z_8(B[ID-1]);}
+
+if(B[ID+1].className==="_0"&&!(B[ID+1].className.match("_9"))){C_0(B[ID+1]);}
+if(B[ID+1].className==="_1"&&!(B[ID+1].className.match("_9"))){Z_1(B[ID+1]);}
+if(B[ID+1].className==="_2"&&!(B[ID+1].className.match("_9"))){Z_2(B[ID+1]);}
+if(B[ID+1].className==="_3"&&!(B[ID+1].className.match("_9"))){Z_3(B[ID+1]);}
+if(B[ID+1].className==="_4"&&!(B[ID+1].className.match("_9"))){Z_4(B[ID+1]);}
+if(B[ID+1].className==="_5"&&!(B[ID+1].className.match("_9"))){Z_5(B[ID+1]);}
+if(B[ID+1].className==="_6"&&!(B[ID+1].className.match("_9"))){Z_6(B[ID+1]);}
+if(B[ID+1].className==="_7"&&!(B[ID+1].className.match("_9"))){Z_7(B[ID+1]);}
+if(B[ID+1].className==="_8"&&!(B[ID+1].className.match("_9"))){Z_8(B[ID+1]);}
+
+if(B[ID-8].className==="_0"&&!(B[ID-8].className.match("_9"))){C_0(B[ID-8]);}
+if(B[ID-8].className==="_1"&&!(B[ID-8].className.match("_9"))){Z_1(B[ID-8]);}
+if(B[ID-8].className==="_2"&&!(B[ID-8].className.match("_9"))){Z_2(B[ID-8]);}
+if(B[ID-8].className==="_3"&&!(B[ID-8].className.match("_9"))){Z_3(B[ID-8]);}
+if(B[ID-8].className==="_4"&&!(B[ID-8].className.match("_9"))){Z_4(B[ID-8]);}
+if(B[ID-8].className==="_5"&&!(B[ID-8].className.match("_9"))){Z_5(B[ID-8]);}
+if(B[ID-8].className==="_6"&&!(B[ID-8].className.match("_9"))){Z_6(B[ID-8]);}
+if(B[ID-8].className==="_7"&&!(B[ID-8].className.match("_9"))){Z_7(B[ID-8]);}
+if(B[ID-8].className==="_8"&&!(B[ID-8].className.match("_9"))){Z_8(B[ID-8]);}
+
+if(B[ID-9].className==="_0"&&!(B[ID-9].className.match("_9"))){C_0(B[ID-9]);}
+if(B[ID-9].className==="_1"&&!(B[ID-9].className.match("_9"))){Z_1(B[ID-9]);}
+if(B[ID-9].className==="_2"&&!(B[ID-9].className.match("_9"))){Z_2(B[ID-9]);}
+if(B[ID-9].className==="_3"&&!(B[ID-9].className.match("_9"))){Z_3(B[ID-9]);}
+if(B[ID-9].className==="_4"&&!(B[ID-9].className.match("_9"))){Z_4(B[ID-9]);}
+if(B[ID-9].className==="_5"&&!(B[ID-9].className.match("_9"))){Z_5(B[ID-9]);}
+if(B[ID-9].className==="_6"&&!(B[ID-9].className.match("_9"))){Z_6(B[ID-9]);}
+if(B[ID-9].className==="_7"&&!(B[ID-9].className.match("_9"))){Z_7(B[ID-9]);}
+if(B[ID-9].className==="_8"&&!(B[ID-9].className.match("_9"))){Z_8(B[ID-9]);}
+
+if(B[ID-10].className==="_0"&&!(B[ID-10].className.match("_9"))){C_0(B[ID-10]);}
+if(B[ID-10].className==="_1"&&!(B[ID-10].className.match("_9"))){Z_1(B[ID-10]);}
+if(B[ID-10].className==="_2"&&!(B[ID-10].className.match("_9"))){Z_2(B[ID-10]);}
+if(B[ID-10].className==="_3"&&!(B[ID-10].className.match("_9"))){Z_3(B[ID-10]);}
+if(B[ID-10].className==="_4"&&!(B[ID-10].className.match("_9"))){Z_4(B[ID-10]);}
+if(B[ID-10].className==="_5"&&!(B[ID-10].className.match("_9"))){Z_5(B[ID-10]);}
+if(B[ID-10].className==="_6"&&!(B[ID-10].className.match("_9"))){Z_6(B[ID-10]);}
+if(B[ID-10].className==="_7"&&!(B[ID-10].className.match("_9"))){Z_7(B[ID-10]);}
+if(B[ID-10].className==="_8"&&!(B[ID-10].className.match("_9"))){Z_8(B[ID-10]);}
+
+if(B[ID+8].className==="_0"&&!(B[ID+8].className.match("_9"))){C_0(B[ID+8]);}
+if(B[ID+8].className==="_1"&&!(B[ID+8].className.match("_9"))){Z_1(B[ID+8]);}
+if(B[ID+8].className==="_2"&&!(B[ID+8].className.match("_9"))){Z_2(B[ID+8]);}
+if(B[ID+8].className==="_3"&&!(B[ID+8].className.match("_9"))){Z_3(B[ID+8]);}
+if(B[ID+8].className==="_4"&&!(B[ID+8].className.match("_9"))){Z_4(B[ID+8]);}
+if(B[ID+8].className==="_5"&&!(B[ID+8].className.match("_9"))){Z_5(B[ID+8]);}
+if(B[ID+8].className==="_6"&&!(B[ID+8].className.match("_9"))){Z_6(B[ID+8]);}
+if(B[ID+8].className==="_7"&&!(B[ID+8].className.match("_9"))){Z_7(B[ID+8]);}
+if(B[ID+8].className==="_8"&&!(B[ID+8].className.match("_9"))){Z_8(B[ID+8]);}
+
+if(B[ID+9].className==="_0"&&!(B[ID+9].className.match("_9"))){C_0(B[ID+9]);}
+if(B[ID+9].className==="_1"&&!(B[ID+9].className.match("_9"))){Z_1(B[ID+9]);}
+if(B[ID+9].className==="_2"&&!(B[ID+9].className.match("_9"))){Z_2(B[ID+9]);}
+if(B[ID+9].className==="_3"&&!(B[ID+9].className.match("_9"))){Z_3(B[ID+9]);}
+if(B[ID+9].className==="_4"&&!(B[ID+9].className.match("_9"))){Z_4(B[ID+9]);}
+if(B[ID+9].className==="_5"&&!(B[ID+9].className.match("_9"))){Z_5(B[ID+9]);}
+if(B[ID+9].className==="_6"&&!(B[ID+9].className.match("_9"))){Z_6(B[ID+9]);}
+if(B[ID+9].className==="_7"&&!(B[ID+9].className.match("_9"))){Z_7(B[ID+9]);}
+if(B[ID+9].className==="_8"&&!(B[ID+9].className.match("_9"))){Z_8(B[ID+9]);}
+
+if(B[ID+10].className==="_0"&&!(B[ID+10].className.match("_9"))){C_0(B[ID+10]);}
+if(B[ID+10].className==="_1"&&!(B[ID+10].className.match("_9"))){Z_1(B[ID+10]);}
+if(B[ID+10].className==="_2"&&!(B[ID+10].className.match("_9"))){Z_2(B[ID+10]);}
+if(B[ID+10].className==="_3"&&!(B[ID+10].className.match("_9"))){Z_3(B[ID+10]);}
+if(B[ID+10].className==="_4"&&!(B[ID+10].className.match("_9"))){Z_4(B[ID+10]);}
+if(B[ID+10].className==="_5"&&!(B[ID+10].className.match("_9"))){Z_5(B[ID+10]);}
+if(B[ID+10].className==="_6"&&!(B[ID+10].className.match("_9"))){Z_6(B[ID+10]);}
+if(B[ID+10].className==="_7"&&!(B[ID+10].className.match("_9"))){Z_7(B[ID+10]);}
+if(B[ID+10].className==="_8"&&!(B[ID+10].className.match("_9"))){Z_8(B[ID+10]);}
+break;
+}//end switch 
+}//end function //!!!
+
+function in_c1(){obj.className +=( " " + "_9" );
+obj.innerHTML = "1";
+HowManyTimes();
+obj.removeEventListener("click",in_c1);
+obj.removeEventListener("contextmenu",funcFlag);
+}//end function
+function in_c2(){obj.className +=( " " + "_9" );
+obj.innerHTML = "2";
+HowManyTimes();
+obj.removeEventListener("click",in_c2);
+obj.removeEventListener("contextmenu",funcFlag);
+}//end function
+function in_c3(){obj.className +=( " " + "_9" );
+obj.innerHTML = "3";
+HowManyTimes();
+obj.removeEventListener("click",in_c3);
+obj.removeEventListener("contextmenu",funcFlag);
+}//end function
+function in_c4(){obj.className +=( " " + "_9" );
+obj.innerHTML = "4";
+HowManyTimes();
+obj.removeEventListener("click",in_c4);
+obj.removeEventListener("contextmenu",funcFlag);
+}//end function
+function in_c5(){obj.className +=( " " + "_9" );
+obj.innerHTML = "5";
+HowManyTimes();
+obj.removeEventListener("click",in_c5);
+obj.removeEventListener("contextmenu",funcFlag);
+}//end function
+function in_c6(){obj.className +=( " " + "_9" );
+obj.innerHTML = "6";
+HowManyTimes();
+obj.removeEventListener("click",in_c6);
+obj.removeEventListener("contextmenu",funcFlag);
+}//end function
+function in_c7(){obj.className +=( " " + "_9" );
+obj.innerHTML = "7";
+HowManyTimes();
+obj.removeEventListener("click",in_c7);
+obj.removeEventListener("contextmenu",funcFlag);
+}//end function
+function in_c8(){obj.className +=( " " + "_9" );
+obj.innerHTML = "8";
+HowManyTimes();
+obj.removeEventListener("click",in_c8);
+obj.removeEventListener("contextmenu",funcFlag);
+}//end function
+
+//console.log(obj.className);
+if(obj.className==="_0"){in_c0();}//end if
+if(obj.className==="_1"){in_c1();}
+if(obj.className==="_2"){in_c2();}
+if(obj.className==="_3"){in_c3();}
+if(obj.className==="_4"){in_c4();}
+if(obj.className==="_5"){in_c5();}
+if(obj.className==="_6"){in_c6();}
+if(obj.className==="_7"){in_c7();}
+if(obj.className==="_8"){in_c8();}
+
+//!
+//creat ClassName Globals
+for(var ctFN=1;ctFN<=81;ctFN++){
+FN[ctFN] = B[ctFN].className;
+}//end for
+
+//insert Flag function
+for(var ctf=1;ctf<=81;ctf++){
+B[ctf].addEventListener("contextmenu",funcFlag);
+}//end for
+
+}//end if
+//console.log(a);
+}//end function //!!!
+
+
+//function during games click
+function C_0(self){
+//alert("boo!");
+self.className += ( " " + "_9" );
+HowManyTimes();
+self.removeEventListener("click",fucnC0);
+self.removeEventListener("contextmenu",funcFlag);
+self.innerHTML = " ";
+//check around for other blocks are also whit a className of _0
+//and make them to check around again and again , until there are no _0 blocks around
+if(self){var ID = Number(self.id);}
+//corner 1,9,73,81
+switch(B[ID].id){
+case "1" : if(B[ID+1].className==="_0"&&!(B[ID+1].className.match("_9"))){C_0(B[ID+1]);}
+if(B[ID+1].className==="_1"&&!(B[ID+1].className.match("_9"))){Z_1(B[ID+1]);}
+if(B[ID+1].className==="_2"&&!(B[ID+1].className.match("_9"))){Z_2(B[ID+1]);}
+if(B[ID+1].className==="_3"&&!(B[ID+1].className.match("_9"))){Z_3(B[ID+1]);}
+if(B[ID+1].className==="_4"&&!(B[ID+1].className.match("_9"))){Z_4(B[ID+1]);}
+if(B[ID+1].className==="_5"&&!(B[ID+1].className.match("_9"))){Z_5(B[ID+1]);}
+if(B[ID+1].className==="_6"&&!(B[ID+1].className.match("_9"))){Z_6(B[ID+1]);}
+if(B[ID+1].className==="_7"&&!(B[ID+1].className.match("_9"))){Z_7(B[ID+1]);}
+if(B[ID+1].className==="_8"&&!(B[ID+1].className.match("_9"))){Z_8(B[ID+1]);}
+
+if(B[ID+9].className==="_0"&&!(B[ID+9].className.match("_9"))){C_0(B[ID+9]);}
+if(B[ID+9].className==="_1"&&!(B[ID+9].className.match("_9"))){Z_1(B[ID+9]);}
+if(B[ID+9].className==="_2"&&!(B[ID+9].className.match("_9"))){Z_2(B[ID+9]);}
+if(B[ID+9].className==="_3"&&!(B[ID+9].className.match("_9"))){Z_3(B[ID+9]);}
+if(B[ID+9].className==="_4"&&!(B[ID+9].className.match("_9"))){Z_4(B[ID+9]);}
+if(B[ID+9].className==="_5"&&!(B[ID+9].className.match("_9"))){Z_5(B[ID+9]);}
+if(B[ID+9].className==="_6"&&!(B[ID+9].className.match("_9"))){Z_6(B[ID+9]);}
+if(B[ID+9].className==="_7"&&!(B[ID+9].className.match("_9"))){Z_7(B[ID+9]);}
+if(B[ID+9].className==="_8"&&!(B[ID+9].className.match("_9"))){Z_8(B[ID+9]);}
+
+if(B[ID+10].className==="_0"&&!(B[ID+10].className.match("_9"))){C_0(B[ID+10]);}
+if(B[ID+10].className==="_1"&&!(B[ID+10].className.match("_9"))){Z_1(B[ID+10]);}
+if(B[ID+10].className==="_2"&&!(B[ID+10].className.match("_9"))){Z_2(B[ID+10]);}
+if(B[ID+10].className==="_3"&&!(B[ID+10].className.match("_9"))){Z_3(B[ID+10]);}
+if(B[ID+10].className==="_4"&&!(B[ID+10].className.match("_9"))){Z_4(B[ID+10]);}
+if(B[ID+10].className==="_5"&&!(B[ID+10].className.match("_9"))){Z_5(B[ID+10]);}
+if(B[ID+10].className==="_6"&&!(B[ID+10].className.match("_9"))){Z_6(B[ID+10]);}
+if(B[ID+10].className==="_7"&&!(B[ID+10].className.match("_9"))){Z_7(B[ID+10]);}
+if(B[ID+10].className==="_8"&&!(B[ID+10].className.match("_9"))){Z_8(B[ID+10]);}
+break;
+case "9" : if(B[ID-1].className==="_0"&&!(B[ID-1].className.match("_9"))){C_0(B[ID-1]);}
+if(B[ID-1].className==="_1"&&!(B[ID-1].className.match("_9"))){Z_1(B[ID-1]);}
+if(B[ID-1].className==="_2"&&!(B[ID-1].className.match("_9"))){Z_2(B[ID-1]);}
+if(B[ID-1].className==="_3"&&!(B[ID-1].className.match("_9"))){Z_3(B[ID-1]);}
+if(B[ID-1].className==="_4"&&!(B[ID-1].className.match("_9"))){Z_4(B[ID-1]);}
+if(B[ID-1].className==="_5"&&!(B[ID-1].className.match("_9"))){Z_5(B[ID-1]);}
+if(B[ID-1].className==="_6"&&!(B[ID-1].className.match("_9"))){Z_6(B[ID-1]);}
+if(B[ID-1].className==="_7"&&!(B[ID-1].className.match("_9"))){Z_7(B[ID-1]);}
+if(B[ID-1].className==="_8"&&!(B[ID-1].className.match("_9"))){Z_8(B[ID-1]);}
+
+if(B[ID+8].className==="_0"&&!(B[ID+8].className.match("_9"))){C_0(B[ID+8]);}
+if(B[ID+8].className==="_1"&&!(B[ID+8].className.match("_9"))){Z_1(B[ID+8]);}
+if(B[ID+8].className==="_2"&&!(B[ID+8].className.match("_9"))){Z_2(B[ID+8]);}
+if(B[ID+8].className==="_3"&&!(B[ID+8].className.match("_9"))){Z_3(B[ID+8]);}
+if(B[ID+8].className==="_4"&&!(B[ID+8].className.match("_9"))){Z_4(B[ID+8]);}
+if(B[ID+8].className==="_5"&&!(B[ID+8].className.match("_9"))){Z_5(B[ID+8]);}
+if(B[ID+8].className==="_6"&&!(B[ID+8].className.match("_9"))){Z_6(B[ID+8]);}
+if(B[ID+8].className==="_7"&&!(B[ID+8].className.match("_9"))){Z_7(B[ID+8]);}
+if(B[ID+8].className==="_8"&&!(B[ID+8].className.match("_9"))){Z_8(B[ID+8]);}
+
+if(B[ID+9].className==="_0"&&!(B[ID+9].className.match("_9"))){C_0(B[ID+9]);}
+if(B[ID+9].className==="_1"&&!(B[ID+9].className.match("_9"))){Z_1(B[ID+9]);}
+if(B[ID+9].className==="_2"&&!(B[ID+9].className.match("_9"))){Z_2(B[ID+9]);}
+if(B[ID+9].className==="_3"&&!(B[ID+9].className.match("_9"))){Z_3(B[ID+9]);}
+if(B[ID+9].className==="_4"&&!(B[ID+9].className.match("_9"))){Z_4(B[ID+9]);}
+if(B[ID+9].className==="_5"&&!(B[ID+9].className.match("_9"))){Z_5(B[ID+9]);}
+if(B[ID+9].className==="_6"&&!(B[ID+9].className.match("_9"))){Z_6(B[ID+9]);}
+if(B[ID+9].className==="_7"&&!(B[ID+9].className.match("_9"))){Z_7(B[ID+9]);}
+if(B[ID+9].className==="_8"&&!(B[ID+9].className.match("_9"))){Z_8(B[ID+9]);}
+break;
+//!
+case "73" : if(B[ID+1].className==="_0"&&!(B[ID+1].className.match("_9"))){C_0(B[ID+1]);}
+if(B[ID+1].className==="_1"&&!(B[ID+1].className.match("_9"))){Z_1(B[ID+1]);}
+if(B[ID+1].className==="_2"&&!(B[ID+1].className.match("_9"))){Z_2(B[ID+1]);}
+if(B[ID+1].className==="_3"&&!(B[ID+1].className.match("_9"))){Z_3(B[ID+1]);}
+if(B[ID+1].className==="_4"&&!(B[ID+1].className.match("_9"))){Z_4(B[ID+1]);}
+if(B[ID+1].className==="_5"&&!(B[ID+1].className.match("_9"))){Z_5(B[ID+1]);}
+if(B[ID+1].className==="_6"&&!(B[ID+1].className.match("_9"))){Z_6(B[ID+1]);}
+if(B[ID+1].className==="_7"&&!(B[ID+1].className.match("_9"))){Z_7(B[ID+1]);}
+if(B[ID+1].className==="_8"&&!(B[ID+1].className.match("_9"))){Z_8(B[ID+1]);}
+
+if(B[ID-8].className==="_0"&&!(B[ID-8].className.match("_9"))){C_0(B[ID-8]);}
+if(B[ID-8].className==="_1"&&!(B[ID-8].className.match("_9"))){Z_1(B[ID-8]);}
+if(B[ID-8].className==="_2"&&!(B[ID-8].className.match("_9"))){Z_2(B[ID-8]);}
+if(B[ID-8].className==="_3"&&!(B[ID-8].className.match("_9"))){Z_3(B[ID-8]);}
+if(B[ID-8].className==="_4"&&!(B[ID-8].className.match("_9"))){Z_4(B[ID-8]);}
+if(B[ID-8].className==="_5"&&!(B[ID-8].className.match("_9"))){Z_5(B[ID-8]);}
+if(B[ID-8].className==="_6"&&!(B[ID-8].className.match("_9"))){Z_6(B[ID-8]);}
+if(B[ID-8].className==="_7"&&!(B[ID-8].className.match("_9"))){Z_7(B[ID-8]);}
+if(B[ID-8].className==="_8"&&!(B[ID-8].className.match("_9"))){Z_8(B[ID-8]);}
+
+if(B[ID-9].className==="_0"&&!(B[ID-9].className.match("_9"))){C_0(B[ID-9]);}
+if(B[ID-9].className==="_1"&&!(B[ID-9].className.match("_9"))){Z_1(B[ID-9]);}
+if(B[ID-9].className==="_2"&&!(B[ID-9].className.match("_9"))){Z_2(B[ID-9]);}
+if(B[ID-9].className==="_3"&&!(B[ID-9].className.match("_9"))){Z_3(B[ID-9]);}
+if(B[ID-9].className==="_4"&&!(B[ID-9].className.match("_9"))){Z_4(B[ID-9]);}
+if(B[ID-9].className==="_5"&&!(B[ID-9].className.match("_9"))){Z_5(B[ID-9]);}
+if(B[ID-9].className==="_6"&&!(B[ID-9].className.match("_9"))){Z_6(B[ID-9]);}
+if(B[ID-9].className==="_7"&&!(B[ID-9].className.match("_9"))){Z_7(B[ID-9]);}
+if(B[ID-9].className==="_8"&&!(B[ID-9].className.match("_9"))){Z_8(B[ID-9]);}
+break;
+
+case "81" :
+if(B[ID-1].className==="_0"&&!(B[ID-1].className.match("_9"))){C_0(B[ID-1]);}
+if(B[ID-1].className==="_1"&&!(B[ID-1].className.match("_9"))){Z_1(B[ID-1]);}
+if(B[ID-1].className==="_2"&&!(B[ID-1].className.match("_9"))){Z_2(B[ID-1]);}
+if(B[ID-1].className==="_3"&&!(B[ID-1].className.match("_9"))){Z_3(B[ID-1]);}
+if(B[ID-1].className==="_4"&&!(B[ID-1].className.match("_9"))){Z_4(B[ID-1]);}
+if(B[ID-1].className==="_5"&&!(B[ID-1].className.match("_9"))){Z_5(B[ID-1]);}
+if(B[ID-1].className==="_6"&&!(B[ID-1].className.match("_9"))){Z_6(B[ID-1]);}
+if(B[ID-1].className==="_7"&&!(B[ID-1].className.match("_9"))){Z_7(B[ID-1]);}
+if(B[ID-1].className==="_8"&&!(B[ID-1].className.match("_9"))){Z_8(B[ID-1]);}
+
+if(B[ID-9].className==="_0"&&!(B[ID-9].className.match("_9"))){C_0(B[ID-9]);}
+if(B[ID-9].className==="_1"&&!(B[ID-9].className.match("_9"))){Z_1(B[ID-9]);}
+if(B[ID-9].className==="_2"&&!(B[ID-9].className.match("_9"))){Z_2(B[ID-9]);}
+if(B[ID-9].className==="_3"&&!(B[ID-9].className.match("_9"))){Z_3(B[ID-9]);}
+if(B[ID-9].className==="_4"&&!(B[ID-9].className.match("_9"))){Z_4(B[ID-9]);}
+if(B[ID-9].className==="_5"&&!(B[ID-9].className.match("_9"))){Z_5(B[ID-9]);}
+if(B[ID-9].className==="_6"&&!(B[ID-9].className.match("_9"))){Z_6(B[ID-9]);}
+if(B[ID-9].className==="_7"&&!(B[ID-9].className.match("_9"))){Z_7(B[ID-9]);}
+if(B[ID-9].className==="_8"&&!(B[ID-9].className.match("_9"))){Z_8(B[ID-9]);}
+
+if(B[ID-10].className==="_0"&&!(B[ID-10].className.match("_9"))){C_0(B[ID-10]);}
+if(B[ID-10].className==="_1"&&!(B[ID-10].className.match("_9"))){Z_1(B[ID-10]);}
+if(B[ID-10].className==="_2"&&!(B[ID-10].className.match("_9"))){Z_2(B[ID-10]);}
+if(B[ID-10].className==="_3"&&!(B[ID-10].className.match("_9"))){Z_3(B[ID-10]);}
+if(B[ID-10].className==="_4"&&!(B[ID-10].className.match("_9"))){Z_4(B[ID-10]);}
+if(B[ID-10].className==="_5"&&!(B[ID-10].className.match("_9"))){Z_5(B[ID-10]);}
+if(B[ID-10].className==="_6"&&!(B[ID-10].className.match("_9"))){Z_6(B[ID-10]);}
+if(B[ID-10].className==="_7"&&!(B[ID-10].className.match("_9"))){Z_7(B[ID-10]);}
+if(B[ID-10].className==="_8"&&!(B[ID-10].className.match("_9"))){Z_8(B[ID-10]);}
+break;
+}//end switch
+
+//top Column 2,3,4,5,6,7,8 -1,+1,+8,+9,+10
+switch(B[ID].id){
+case "2" :
+case "3" :
+case "4" :
+case "5" :
+case "6" :
+case "7" :
+case "8" :
+if(B[ID-1].className==="_0"&&!(B[ID-1].className.match("_9"))){C_0(B[ID-1]);}
+if(B[ID-1].className==="_1"&&!(B[ID-1].className.match("_9"))){Z_1(B[ID-1]);}
+if(B[ID-1].className==="_2"&&!(B[ID-1].className.match("_9"))){Z_2(B[ID-1]);}
+if(B[ID-1].className==="_3"&&!(B[ID-1].className.match("_9"))){Z_3(B[ID-1]);}
+if(B[ID-1].className==="_4"&&!(B[ID-1].className.match("_9"))){Z_4(B[ID-1]);}
+if(B[ID-1].className==="_5"&&!(B[ID-1].className.match("_9"))){Z_5(B[ID-1]);}
+if(B[ID-1].className==="_6"&&!(B[ID-1].className.match("_9"))){Z_6(B[ID-1]);}
+if(B[ID-1].className==="_7"&&!(B[ID-1].className.match("_9"))){Z_7(B[ID-1]);}
+if(B[ID-1].className==="_8"&&!(B[ID-1].className.match("_9"))){Z_8(B[ID-1]);}
+
+if(B[ID+1].className==="_0"&&!(B[ID+1].className.match("_9"))){C_0(B[ID+1]);}
+if(B[ID+1].className==="_1"&&!(B[ID+1].className.match("_9"))){Z_1(B[ID+1]);}
+if(B[ID+1].className==="_2"&&!(B[ID+1].className.match("_9"))){Z_2(B[ID+1]);}
+if(B[ID+1].className==="_3"&&!(B[ID+1].className.match("_9"))){Z_3(B[ID+1]);}
+if(B[ID+1].className==="_4"&&!(B[ID+1].className.match("_9"))){Z_4(B[ID+1]);}
+if(B[ID+1].className==="_5"&&!(B[ID+1].className.match("_9"))){Z_5(B[ID+1]);}
+if(B[ID+1].className==="_6"&&!(B[ID+1].className.match("_9"))){Z_6(B[ID+1]);}
+if(B[ID+1].className==="_7"&&!(B[ID+1].className.match("_9"))){Z_7(B[ID+1]);}
+if(B[ID+1].className==="_8"&&!(B[ID+1].className.match("_9"))){Z_8(B[ID+1]);}
+
+if(B[ID+8].className==="_0"&&!(B[ID+8].className.match("_9"))){C_0(B[ID+8]);}
+if(B[ID+8].className==="_1"&&!(B[ID+8].className.match("_9"))){Z_1(B[ID+8]);}
+if(B[ID+8].className==="_2"&&!(B[ID+8].className.match("_9"))){Z_2(B[ID+8]);}
+if(B[ID+8].className==="_3"&&!(B[ID+8].className.match("_9"))){Z_3(B[ID+8]);}
+if(B[ID+8].className==="_4"&&!(B[ID+8].className.match("_9"))){Z_4(B[ID+8]);}
+if(B[ID+8].className==="_5"&&!(B[ID+8].className.match("_9"))){Z_5(B[ID+8]);}
+if(B[ID+8].className==="_6"&&!(B[ID+8].className.match("_9"))){Z_6(B[ID+8]);}
+if(B[ID+8].className==="_7"&&!(B[ID+8].className.match("_9"))){Z_7(B[ID+8]);}
+if(B[ID+8].className==="_8"&&!(B[ID+8].className.match("_9"))){Z_8(B[ID+8]);}
+
+if(B[ID+9].className==="_0"&&!(B[ID+9].className.match("_9"))){C_0(B[ID+9]);}
+if(B[ID+9].className==="_1"&&!(B[ID+9].className.match("_9"))){Z_1(B[ID+9]);}
+if(B[ID+9].className==="_2"&&!(B[ID+9].className.match("_9"))){Z_2(B[ID+9]);}
+if(B[ID+9].className==="_3"&&!(B[ID+9].className.match("_9"))){Z_3(B[ID+9]);}
+if(B[ID+9].className==="_4"&&!(B[ID+9].className.match("_9"))){Z_4(B[ID+9]);}
+if(B[ID+9].className==="_5"&&!(B[ID+9].className.match("_9"))){Z_5(B[ID+9]);}
+if(B[ID+9].className==="_6"&&!(B[ID+9].className.match("_9"))){Z_6(B[ID+9]);}
+if(B[ID+9].className==="_7"&&!(B[ID+9].className.match("_9"))){Z_7(B[ID+9]);}
+if(B[ID+9].className==="_8"&&!(B[ID+9].className.match("_9"))){Z_8(B[ID+9]);}
+
+if(B[ID+10].className==="_0"&&!(B[ID+10].className.match("_9"))){C_0(B[ID+10]);}
+if(B[ID+10].className==="_1"&&!(B[ID+10].className.match("_9"))){Z_1(B[ID+10]);}
+if(B[ID+10].className==="_2"&&!(B[ID+10].className.match("_9"))){Z_2(B[ID+10]);}
+if(B[ID+10].className==="_3"&&!(B[ID+10].className.match("_9"))){Z_3(B[ID+10]);}
+if(B[ID+10].className==="_4"&&!(B[ID+10].className.match("_9"))){Z_4(B[ID+10]);}
+if(B[ID+10].className==="_5"&&!(B[ID+10].className.match("_9"))){Z_5(B[ID+10]);}
+if(B[ID+10].className==="_6"&&!(B[ID+10].className.match("_9"))){Z_6(B[ID+10]);}
+if(B[ID+10].className==="_7"&&!(B[ID+10].className.match("_9"))){Z_7(B[ID+10]);}
+if(B[ID+10].className==="_8"&&!(B[ID+10].className.match("_9"))){Z_8(B[ID+10]);}
+break;
+}//end switch
+
+//last Column 74,75,76,77,78,79,80 -1,+1,-8,-9,-10
+switch(B[ID].id){
+case "74" :
+case "75" :
+case "76" :
+case "77" :
+case "78" :
+case "79" :
+case "80" :
+if(B[ID-1].className==="_0"&&!(B[ID-1].className.match("_9"))){C_0(B[ID-1]);}
+if(B[ID-1].className==="_1"&&!(B[ID-1].className.match("_9"))){Z_1(B[ID-1]);}
+if(B[ID-1].className==="_2"&&!(B[ID-1].className.match("_9"))){Z_2(B[ID-1]);}
+if(B[ID-1].className==="_3"&&!(B[ID-1].className.match("_9"))){Z_3(B[ID-1]);}
+if(B[ID-1].className==="_4"&&!(B[ID-1].className.match("_9"))){Z_4(B[ID-1]);}
+if(B[ID-1].className==="_5"&&!(B[ID-1].className.match("_9"))){Z_5(B[ID-1]);}
+if(B[ID-1].className==="_6"&&!(B[ID-1].className.match("_9"))){Z_6(B[ID-1]);}
+if(B[ID-1].className==="_7"&&!(B[ID-1].className.match("_9"))){Z_7(B[ID-1]);}
+if(B[ID-1].className==="_8"&&!(B[ID-1].className.match("_9"))){Z_8(B[ID-1]);}
+
+if(B[ID+1].className==="_0"&&!(B[ID+1].className.match("_9"))){C_0(B[ID+1]);}
+if(B[ID+1].className==="_1"&&!(B[ID+1].className.match("_9"))){Z_1(B[ID+1]);}
+if(B[ID+1].className==="_2"&&!(B[ID+1].className.match("_9"))){Z_2(B[ID+1]);}
+if(B[ID+1].className==="_3"&&!(B[ID+1].className.match("_9"))){Z_3(B[ID+1]);}
+if(B[ID+1].className==="_4"&&!(B[ID+1].className.match("_9"))){Z_4(B[ID+1]);}
+if(B[ID+1].className==="_5"&&!(B[ID+1].className.match("_9"))){Z_5(B[ID+1]);}
+if(B[ID+1].className==="_6"&&!(B[ID+1].className.match("_9"))){Z_6(B[ID+1]);}
+if(B[ID+1].className==="_7"&&!(B[ID+1].className.match("_9"))){Z_7(B[ID+1]);}
+if(B[ID+1].className==="_8"&&!(B[ID+1].className.match("_9"))){Z_8(B[ID+1]);}
+
+if(B[ID-8].className==="_0"&&!(B[ID-8].className.match("_9"))){C_0(B[ID-8]);}
+if(B[ID-8].className==="_1"&&!(B[ID-8].className.match("_9"))){Z_1(B[ID-8]);}
+if(B[ID-8].className==="_2"&&!(B[ID-8].className.match("_9"))){Z_2(B[ID-8]);}
+if(B[ID-8].className==="_3"&&!(B[ID-8].className.match("_9"))){Z_3(B[ID-8]);}
+if(B[ID-8].className==="_4"&&!(B[ID-8].className.match("_9"))){Z_4(B[ID-8]);}
+if(B[ID-8].className==="_5"&&!(B[ID-8].className.match("_9"))){Z_5(B[ID-8]);}
+if(B[ID-8].className==="_6"&&!(B[ID-8].className.match("_9"))){Z_6(B[ID-8]);}
+if(B[ID-8].className==="_7"&&!(B[ID-8].className.match("_9"))){Z_7(B[ID-8]);}
+if(B[ID-8].className==="_8"&&!(B[ID-8].className.match("_9"))){Z_8(B[ID-8]);}
+
+if(B[ID-9].className==="_0"&&!(B[ID-9].className.match("_9"))){C_0(B[ID-9]);}
+if(B[ID-9].className==="_1"&&!(B[ID-9].className.match("_9"))){Z_1(B[ID-9]);}
+if(B[ID-9].className==="_2"&&!(B[ID-9].className.match("_9"))){Z_2(B[ID-9]);}
+if(B[ID-9].className==="_3"&&!(B[ID-9].className.match("_9"))){Z_3(B[ID-9]);}
+if(B[ID-9].className==="_4"&&!(B[ID-9].className.match("_9"))){Z_4(B[ID-9]);}
+if(B[ID-9].className==="_5"&&!(B[ID-9].className.match("_9"))){Z_5(B[ID-9]);}
+if(B[ID-9].className==="_6"&&!(B[ID-9].className.match("_9"))){Z_6(B[ID-9]);}
+if(B[ID-9].className==="_7"&&!(B[ID-9].className.match("_9"))){Z_7(B[ID-9]);}
+if(B[ID-9].className==="_8"&&!(B[ID-9].className.match("_9"))){Z_8(B[ID-9]);}
+
+if(B[ID-10].className==="_0"&&!(B[ID-10].className.match("_9"))){C_0(B[ID-10]);}
+if(B[ID-10].className==="_1"&&!(B[ID-10].className.match("_9"))){Z_1(B[ID-10]);}
+if(B[ID-10].className==="_2"&&!(B[ID-10].className.match("_9"))){Z_2(B[ID-10]);}
+if(B[ID-10].className==="_3"&&!(B[ID-10].className.match("_9"))){Z_3(B[ID-10]);}
+if(B[ID-10].className==="_4"&&!(B[ID-10].className.match("_9"))){Z_4(B[ID-10]);}
+if(B[ID-10].className==="_5"&&!(B[ID-10].className.match("_9"))){Z_5(B[ID-10]);}
+if(B[ID-10].className==="_6"&&!(B[ID-10].className.match("_9"))){Z_6(B[ID-10]);}
+if(B[ID-10].className==="_7"&&!(B[ID-10].className.match("_9"))){Z_7(B[ID-10]);}
+if(B[ID-10].className==="_8"&&!(B[ID-10].className.match("_9"))){Z_8(B[ID-10]);}
+break;
+}//end switch
+
+//first roll 10,19,28,37,46,55,64 +1 +9 +10 -8 -9
+switch(B[ID].id){
+case "10" :
+case "19" :
+case "28" :
+case "37" :
+case "46" :
+case "55" :
+case "64" :
+if(B[ID+1].className==="_0"&&!(B[ID+1].className.match("_9"))){C_0(B[ID+1]);}
+if(B[ID+1].className==="_1"&&!(B[ID+1].className.match("_9"))){Z_1(B[ID+1]);}
+if(B[ID+1].className==="_2"&&!(B[ID+1].className.match("_9"))){Z_2(B[ID+1]);}
+if(B[ID+1].className==="_3"&&!(B[ID+1].className.match("_9"))){Z_3(B[ID+1]);}
+if(B[ID+1].className==="_4"&&!(B[ID+1].className.match("_9"))){Z_4(B[ID+1]);}
+if(B[ID+1].className==="_5"&&!(B[ID+1].className.match("_9"))){Z_5(B[ID+1]);}
+if(B[ID+1].className==="_6"&&!(B[ID+1].className.match("_9"))){Z_6(B[ID+1]);}
+if(B[ID+1].className==="_7"&&!(B[ID+1].className.match("_9"))){Z_7(B[ID+1]);}
+if(B[ID+1].className==="_8"&&!(B[ID+1].className.match("_9"))){Z_8(B[ID+1]);}
+
+if(B[ID+9].className==="_0"&&!(B[ID+9].className.match("_9"))){C_0(B[ID+9]);}
+if(B[ID+9].className==="_1"&&!(B[ID+9].className.match("_9"))){Z_1(B[ID+9]);}
+if(B[ID+9].className==="_2"&&!(B[ID+9].className.match("_9"))){Z_2(B[ID+9]);}
+if(B[ID+9].className==="_3"&&!(B[ID+9].className.match("_9"))){Z_3(B[ID+9]);}
+if(B[ID+9].className==="_4"&&!(B[ID+9].className.match("_9"))){Z_4(B[ID+9]);}
+if(B[ID+9].className==="_5"&&!(B[ID+9].className.match("_9"))){Z_5(B[ID+9]);}
+if(B[ID+9].className==="_6"&&!(B[ID+9].className.match("_9"))){Z_6(B[ID+9]);}
+if(B[ID+9].className==="_7"&&!(B[ID+9].className.match("_9"))){Z_7(B[ID+9]);}
+if(B[ID+9].className==="_8"&&!(B[ID+9].className.match("_9"))){Z_8(B[ID+9]);}
+
+if(B[ID+10].className==="_0"&&!(B[ID+10].className.match("_9"))){C_0(B[ID+10]);}
+if(B[ID+10].className==="_1"&&!(B[ID+10].className.match("_9"))){Z_1(B[ID+10]);}
+if(B[ID+10].className==="_2"&&!(B[ID+10].className.match("_9"))){Z_2(B[ID+10]);}
+if(B[ID+10].className==="_3"&&!(B[ID+10].className.match("_9"))){Z_3(B[ID+10]);}
+if(B[ID+10].className==="_4"&&!(B[ID+10].className.match("_9"))){Z_4(B[ID+10]);}
+if(B[ID+10].className==="_5"&&!(B[ID+10].className.match("_9"))){Z_5(B[ID+10]);}
+if(B[ID+10].className==="_6"&&!(B[ID+10].className.match("_9"))){Z_6(B[ID+10]);}
+if(B[ID+10].className==="_7"&&!(B[ID+10].className.match("_9"))){Z_7(B[ID+10]);}
+if(B[ID+10].className==="_8"&&!(B[ID+10].className.match("_9"))){Z_8(B[ID+10]);}
+
+if(B[ID-8].className==="_0"&&!(B[ID-8].className.match("_9"))){C_0(B[ID-8]);}
+if(B[ID-8].className==="_1"&&!(B[ID-8].className.match("_9"))){Z_1(B[ID-8]);}
+if(B[ID-8].className==="_2"&&!(B[ID-8].className.match("_9"))){Z_2(B[ID-8]);}
+if(B[ID-8].className==="_3"&&!(B[ID-8].className.match("_9"))){Z_3(B[ID-8]);}
+if(B[ID-8].className==="_4"&&!(B[ID-8].className.match("_9"))){Z_4(B[ID-8]);}
+if(B[ID-8].className==="_5"&&!(B[ID-8].className.match("_9"))){Z_5(B[ID-8]);}
+if(B[ID-8].className==="_6"&&!(B[ID-8].className.match("_9"))){Z_6(B[ID-8]);}
+if(B[ID-8].className==="_7"&&!(B[ID-8].className.match("_9"))){Z_7(B[ID-8]);}
+if(B[ID-8].className==="_8"&&!(B[ID-8].className.match("_9"))){Z_8(B[ID-8]);}
+
+if(B[ID-9].className==="_0"&&!(B[ID-9].className.match("_9"))){C_0(B[ID-9]);}
+if(B[ID-9].className==="_1"&&!(B[ID-9].className.match("_9"))){Z_1(B[ID-9]);}
+if(B[ID-9].className==="_2"&&!(B[ID-9].className.match("_9"))){Z_2(B[ID-9]);}
+if(B[ID-9].className==="_3"&&!(B[ID-9].className.match("_9"))){Z_3(B[ID-9]);}
+if(B[ID-9].className==="_4"&&!(B[ID-9].className.match("_9"))){Z_4(B[ID-9]);}
+if(B[ID-9].className==="_5"&&!(B[ID-9].className.match("_9"))){Z_5(B[ID-9]);}
+if(B[ID-9].className==="_6"&&!(B[ID-9].className.match("_9"))){Z_6(B[ID-9]);}
+if(B[ID-9].className==="_7"&&!(B[ID-9].className.match("_9"))){Z_7(B[ID-9]);}
+if(B[ID-9].className==="_8"&&!(B[ID-9].className.match("_9"))){Z_8(B[ID-9]);}
+break;
+}//end switch
+
+//last roll 18,27,36,45,54,63,72 -1 -9 -10 +9 +8
+switch(B[ID].id){
+case "18" :
+case "27" :
+case "36" :
+case "45" :
+case "54" :
+case "63" :
+case "72" :
+if(B[ID-1].className==="_0"&&!(B[ID-1].className.match("_9"))){C_0(B[ID-1]);}
+if(B[ID-1].className==="_1"&&!(B[ID-1].className.match("_9"))){Z_1(B[ID-1]);}
+if(B[ID-1].className==="_2"&&!(B[ID-1].className.match("_9"))){Z_2(B[ID-1]);}
+if(B[ID-1].className==="_3"&&!(B[ID-1].className.match("_9"))){Z_3(B[ID-1]);}
+if(B[ID-1].className==="_4"&&!(B[ID-1].className.match("_9"))){Z_4(B[ID-1]);}
+if(B[ID-1].className==="_5"&&!(B[ID-1].className.match("_9"))){Z_5(B[ID-1]);}
+if(B[ID-1].className==="_6"&&!(B[ID-1].className.match("_9"))){Z_6(B[ID-1]);}
+if(B[ID-1].className==="_7"&&!(B[ID-1].className.match("_9"))){Z_7(B[ID-1]);}
+if(B[ID-1].className==="_8"&&!(B[ID-1].className.match("_9"))){Z_8(B[ID-1]);}
+
+if(B[ID-9].className==="_0"&&!(B[ID-9].className.match("_9"))){C_0(B[ID-9]);}
+if(B[ID-9].className==="_1"&&!(B[ID-9].className.match("_9"))){Z_1(B[ID-9]);}
+if(B[ID-9].className==="_2"&&!(B[ID-9].className.match("_9"))){Z_2(B[ID-9]);}
+if(B[ID-9].className==="_3"&&!(B[ID-9].className.match("_9"))){Z_3(B[ID-9]);}
+if(B[ID-9].className==="_4"&&!(B[ID-9].className.match("_9"))){Z_4(B[ID-9]);}
+if(B[ID-9].className==="_5"&&!(B[ID-9].className.match("_9"))){Z_5(B[ID-9]);}
+if(B[ID-9].className==="_6"&&!(B[ID-9].className.match("_9"))){Z_6(B[ID-9]);}
+if(B[ID-9].className==="_7"&&!(B[ID-9].className.match("_9"))){Z_7(B[ID-9]);}
+if(B[ID-9].className==="_8"&&!(B[ID-9].className.match("_9"))){Z_8(B[ID-9]);}
+
+if(B[ID-10].className==="_0"&&!(B[ID-10].className.match("_9"))){C_0(B[ID-10]);}
+if(B[ID-10].className==="_1"&&!(B[ID-10].className.match("_9"))){Z_1(B[ID-10]);}
+if(B[ID-10].className==="_2"&&!(B[ID-10].className.match("_9"))){Z_2(B[ID-10]);}
+if(B[ID-10].className==="_3"&&!(B[ID-10].className.match("_9"))){Z_3(B[ID-10]);}
+if(B[ID-10].className==="_4"&&!(B[ID-10].className.match("_9"))){Z_4(B[ID-10]);}
+if(B[ID-10].className==="_5"&&!(B[ID-10].className.match("_9"))){Z_5(B[ID-10]);}
+if(B[ID-10].className==="_6"&&!(B[ID-10].className.match("_9"))){Z_6(B[ID-10]);}
+if(B[ID-10].className==="_7"&&!(B[ID-10].className.match("_9"))){Z_7(B[ID-10]);}
+if(B[ID-10].className==="_8"&&!(B[ID-10].className.match("_9"))){Z_8(B[ID-10]);}
+
+if(B[ID+8].className==="_0"&&!(B[ID+8].className.match("_9"))){C_0(B[ID+8]);}
+if(B[ID+8].className==="_1"&&!(B[ID+8].className.match("_9"))){Z_1(B[ID+8]);}
+if(B[ID+8].className==="_2"&&!(B[ID+8].className.match("_9"))){Z_2(B[ID+8]);}
+if(B[ID+8].className==="_3"&&!(B[ID+8].className.match("_9"))){Z_3(B[ID+8]);}
+if(B[ID+8].className==="_4"&&!(B[ID+8].className.match("_9"))){Z_4(B[ID+8]);}
+if(B[ID+8].className==="_5"&&!(B[ID+8].className.match("_9"))){Z_5(B[ID+8]);}
+if(B[ID+8].className==="_6"&&!(B[ID+8].className.match("_9"))){Z_6(B[ID+8]);}
+if(B[ID+8].className==="_7"&&!(B[ID+8].className.match("_9"))){Z_7(B[ID+8]);}
+if(B[ID+8].className==="_8"&&!(B[ID+8].className.match("_9"))){Z_8(B[ID+8]);}
+
+if(B[ID+9].className==="_0"&&!(B[ID+9].className.match("_9"))){C_0(B[ID+9]);}
+if(B[ID+9].className==="_1"&&!(B[ID+9].className.match("_9"))){Z_1(B[ID+9]);}
+if(B[ID+9].className==="_2"&&!(B[ID+9].className.match("_9"))){Z_2(B[ID+9]);}
+if(B[ID+9].className==="_3"&&!(B[ID+9].className.match("_9"))){Z_3(B[ID+9]);}
+if(B[ID+9].className==="_4"&&!(B[ID+9].className.match("_9"))){Z_4(B[ID+9]);}
+if(B[ID+9].className==="_5"&&!(B[ID+9].className.match("_9"))){Z_5(B[ID+9]);}
+if(B[ID+9].className==="_6"&&!(B[ID+9].className.match("_9"))){Z_6(B[ID+9]);}
+if(B[ID+9].className==="_7"&&!(B[ID+9].className.match("_9"))){Z_7(B[ID+9]);}
+if(B[ID+9].className==="_8"&&!(B[ID+9].className.match("_9"))){Z_8(B[ID+9]);}
+break;
+}//end switch
+
+//others 11-17 20-26 29-35 38-44 47-53 56-62 65-71 +1,-1,-10,-9,-8,+8,+9,+10
+//11-17
+switch(B[ID].id){
+case "11" :
+case "12" :
+case "13" :
+case "14" :
+case "15" :
+case "16" :
+case "17" :
+//20-26
+case "20" :
+case "21" :
+case "22" :
+case "23" :
+case "24" :
+case "25" :
+case "26" :
+//29-35
+case "29" :
+case "30" :
+case "31" :
+case "32" :
+case "33" :
+case "34" :
+case "35" :
+//38-44
+case "38" :
+case "39" :
+case "40" :
+case "41" :
+case "42" :
+case "43" :
+case "44" :
+//47-53
+case "47" :
+case "48" :
+case "49" :
+case "50" :
+case "51" :
+case "52" :
+case "53" :
+case "56" :
+//56-62
+case "57" :
+case "58" :
+case "59" :
+case "60" :
+case "61" :
+case "62" :
+//65-71
+case "65" :
+case "66" :
+case "67" :
+case "68" :
+case "69" :
+case "70" :
+case "71" :
+if(B[ID-1].className==="_0"&&!(B[ID-1].className.match("_9"))){C_0(B[ID-1]);}
+if(B[ID-1].className==="_1"&&!(B[ID-1].className.match("_9"))){Z_1(B[ID-1]);}
+if(B[ID-1].className==="_2"&&!(B[ID-1].className.match("_9"))){Z_2(B[ID-1]);}
+if(B[ID-1].className==="_3"&&!(B[ID-1].className.match("_9"))){Z_3(B[ID-1]);}
+if(B[ID-1].className==="_4"&&!(B[ID-1].className.match("_9"))){Z_4(B[ID-1]);}
+if(B[ID-1].className==="_5"&&!(B[ID-1].className.match("_9"))){Z_5(B[ID-1]);}
+if(B[ID-1].className==="_6"&&!(B[ID-1].className.match("_9"))){Z_6(B[ID-1]);}
+if(B[ID-1].className==="_7"&&!(B[ID-1].className.match("_9"))){Z_7(B[ID-1]);}
+if(B[ID-1].className==="_8"&&!(B[ID-1].className.match("_9"))){Z_8(B[ID-1]);}
+
+if(B[ID+1].className==="_0"&&!(B[ID+1].className.match("_9"))){C_0(B[ID+1]);}
+if(B[ID+1].className==="_1"&&!(B[ID+1].className.match("_9"))){Z_1(B[ID+1]);}
+if(B[ID+1].className==="_2"&&!(B[ID+1].className.match("_9"))){Z_2(B[ID+1]);}
+if(B[ID+1].className==="_3"&&!(B[ID+1].className.match("_9"))){Z_3(B[ID+1]);}
+if(B[ID+1].className==="_4"&&!(B[ID+1].className.match("_9"))){Z_4(B[ID+1]);}
+if(B[ID+1].className==="_5"&&!(B[ID+1].className.match("_9"))){Z_5(B[ID+1]);}
+if(B[ID+1].className==="_6"&&!(B[ID+1].className.match("_9"))){Z_6(B[ID+1]);}
+if(B[ID+1].className==="_7"&&!(B[ID+1].className.match("_9"))){Z_7(B[ID+1]);}
+if(B[ID+1].className==="_8"&&!(B[ID+1].className.match("_9"))){Z_8(B[ID+1]);}
+
+if(B[ID-8].className==="_0"&&!(B[ID-8].className.match("_9"))){C_0(B[ID-8]);}
+if(B[ID-8].className==="_1"&&!(B[ID-8].className.match("_9"))){Z_1(B[ID-8]);}
+if(B[ID-8].className==="_2"&&!(B[ID-8].className.match("_9"))){Z_2(B[ID-8]);}
+if(B[ID-8].className==="_3"&&!(B[ID-8].className.match("_9"))){Z_3(B[ID-8]);}
+if(B[ID-8].className==="_4"&&!(B[ID-8].className.match("_9"))){Z_4(B[ID-8]);}
+if(B[ID-8].className==="_5"&&!(B[ID-8].className.match("_9"))){Z_5(B[ID-8]);}
+if(B[ID-8].className==="_6"&&!(B[ID-8].className.match("_9"))){Z_6(B[ID-8]);}
+if(B[ID-8].className==="_7"&&!(B[ID-8].className.match("_9"))){Z_7(B[ID-8]);}
+if(B[ID-8].className==="_8"&&!(B[ID-8].className.match("_9"))){Z_8(B[ID-8]);}
+
+if(B[ID-9].className==="_0"&&!(B[ID-9].className.match("_9"))){C_0(B[ID-9]);}
+if(B[ID-9].className==="_1"&&!(B[ID-9].className.match("_9"))){Z_1(B[ID-9]);}
+if(B[ID-9].className==="_2"&&!(B[ID-9].className.match("_9"))){Z_2(B[ID-9]);}
+if(B[ID-9].className==="_3"&&!(B[ID-9].className.match("_9"))){Z_3(B[ID-9]);}
+if(B[ID-9].className==="_4"&&!(B[ID-9].className.match("_9"))){Z_4(B[ID-9]);}
+if(B[ID-9].className==="_5"&&!(B[ID-9].className.match("_9"))){Z_5(B[ID-9]);}
+if(B[ID-9].className==="_6"&&!(B[ID-9].className.match("_9"))){Z_6(B[ID-9]);}
+if(B[ID-9].className==="_7"&&!(B[ID-9].className.match("_9"))){Z_7(B[ID-9]);}
+if(B[ID-9].className==="_8"&&!(B[ID-9].className.match("_9"))){Z_8(B[ID-9]);}
+
+if(B[ID-10].className==="_0"&&!(B[ID-10].className.match("_9"))){C_0(B[ID-10]);}
+if(B[ID-10].className==="_1"&&!(B[ID-10].className.match("_9"))){Z_1(B[ID-10]);}
+if(B[ID-10].className==="_2"&&!(B[ID-10].className.match("_9"))){Z_2(B[ID-10]);}
+if(B[ID-10].className==="_3"&&!(B[ID-10].className.match("_9"))){Z_3(B[ID-10]);}
+if(B[ID-10].className==="_4"&&!(B[ID-10].className.match("_9"))){Z_4(B[ID-10]);}
+if(B[ID-10].className==="_5"&&!(B[ID-10].className.match("_9"))){Z_5(B[ID-10]);}
+if(B[ID-10].className==="_6"&&!(B[ID-10].className.match("_9"))){Z_6(B[ID-10]);}
+if(B[ID-10].className==="_7"&&!(B[ID-10].className.match("_9"))){Z_7(B[ID-10]);}
+if(B[ID-10].className==="_8"&&!(B[ID-10].className.match("_9"))){Z_8(B[ID-10]);}
+
+if(B[ID+8].className==="_0"&&!(B[ID+8].className.match("_9"))){C_0(B[ID+8]);}
+if(B[ID+8].className==="_1"&&!(B[ID+8].className.match("_9"))){Z_1(B[ID+8]);}
+if(B[ID+8].className==="_2"&&!(B[ID+8].className.match("_9"))){Z_2(B[ID+8]);}
+if(B[ID+8].className==="_3"&&!(B[ID+8].className.match("_9"))){Z_3(B[ID+8]);}
+if(B[ID+8].className==="_4"&&!(B[ID+8].className.match("_9"))){Z_4(B[ID+8]);}
+if(B[ID+8].className==="_5"&&!(B[ID+8].className.match("_9"))){Z_5(B[ID+8]);}
+if(B[ID+8].className==="_6"&&!(B[ID+8].className.match("_9"))){Z_6(B[ID+8]);}
+if(B[ID+8].className==="_7"&&!(B[ID+8].className.match("_9"))){Z_7(B[ID+8]);}
+if(B[ID+8].className==="_8"&&!(B[ID+8].className.match("_9"))){Z_8(B[ID+8]);}
+
+if(B[ID+9].className==="_0"&&!(B[ID+9].className.match("_9"))){C_0(B[ID+9]);}
+if(B[ID+9].className==="_1"&&!(B[ID+9].className.match("_9"))){Z_1(B[ID+9]);}
+if(B[ID+9].className==="_2"&&!(B[ID+9].className.match("_9"))){Z_2(B[ID+9]);}
+if(B[ID+9].className==="_3"&&!(B[ID+9].className.match("_9"))){Z_3(B[ID+9]);}
+if(B[ID+9].className==="_4"&&!(B[ID+9].className.match("_9"))){Z_4(B[ID+9]);}
+if(B[ID+9].className==="_5"&&!(B[ID+9].className.match("_9"))){Z_5(B[ID+9]);}
+if(B[ID+9].className==="_6"&&!(B[ID+9].className.match("_9"))){Z_6(B[ID+9]);}
+if(B[ID+9].className==="_7"&&!(B[ID+9].className.match("_9"))){Z_7(B[ID+9]);}
+if(B[ID+9].className==="_8"&&!(B[ID+9].className.match("_9"))){Z_8(B[ID+9]);}
+
+if(B[ID+10].className==="_0"&&!(B[ID+10].className.match("_9"))){C_0(B[ID+10]);}
+if(B[ID+10].className==="_1"&&!(B[ID+10].className.match("_9"))){Z_1(B[ID+10]);}
+if(B[ID+10].className==="_2"&&!(B[ID+10].className.match("_9"))){Z_2(B[ID+10]);}
+if(B[ID+10].className==="_3"&&!(B[ID+10].className.match("_9"))){Z_3(B[ID+10]);}
+if(B[ID+10].className==="_4"&&!(B[ID+10].className.match("_9"))){Z_4(B[ID+10]);}
+if(B[ID+10].className==="_5"&&!(B[ID+10].className.match("_9"))){Z_5(B[ID+10]);}
+if(B[ID+10].className==="_6"&&!(B[ID+10].className.match("_9"))){Z_6(B[ID+10]);}
+if(B[ID+10].className==="_7"&&!(B[ID+10].className.match("_9"))){Z_7(B[ID+10]);}
+if(B[ID+10].className==="_8"&&!(B[ID+10].className.match("_9"))){Z_8(B[ID+10]);}
+break;
+}//end switch
+}//end function
+
+//function prepare for zero situation
+function Z_1(self){//alert(this.className);
+self.className +=( " " + "_9" );
+self.innerHTML = "1";
+HowManyTimes();
+self.removeEventListener("click",C_1);
+self.removeEventListener("contextmenu",funcFlag);
+}//end function
+function Z_2(self){//alert(this.className);
+self.className +=( " " + "_9" );
+self.innerHTML = "2";
+HowManyTimes();
+self.removeEventListener("click",C_2);
+self.removeEventListener("contextmenu",funcFlag);
+}//end function
+function Z_3(self){//alert(this.className);
+self.className +=( " " + "_9" );
+self.innerHTML = "3";
+HowManyTimes();
+self.removeEventListener("click",C_3);
+self.removeEventListener("contextmenu",funcFlag);
+}//end function
+function Z_4(self){//alert(this.className);
+self.className +=( " " + "_9" );
+self.innerHTML = "4";
+HowManyTimes();
+self.removeEventListener("click",C_4);
+self.removeEventListener("contextmenu",funcFlag);
+}//end function
+function Z_5(self){//alert(this.className);
+self.className +=( " " + "_9" );
+self.innerHTML = "5";
+HowManyTimes();
+self.removeEventListener("click",C_5);
+self.removeEventListener("contextmenu",funcFlag);
+}//end function
+function Z_6(self){//alert(this.className);
+self.className +=( " " + "_9" );
+self.innerHTML = "6";
+HowManyTimes();
+self.removeEventListener("click",C_6);
+self.removeEventListener("contextmenu",funcFlag);
+}//end function
+function Z_7(self){//alert(this.className);
+self.className +=( " " + "_9" );
+self.innerHTML = "7";
+HowManyTimes();
+self.removeEventListener("click",C_7);
+self.removeEventListener("contextmenu",funcFlag);
+}//end function
+function Z_8(self){//alert(this.className);
+self.className +=( " " + "_9" );
+self.innerHTML = "8";
+HowManyTimes();
+self.removeEventListener("click",C_8);
+self.removeEventListener("contextmenu",funcFlag);
+}//end function
+
+//functions for normal situation
+function C_1(){//alert(this.className);
+if(!(this.className.match("_F"))){
+this.className +=( " " + "_9" );
+this.innerHTML = "1";
+HowManyTimes();
+this.removeEventListener("click",C_1);
+this.removeEventListener("contextmenu",funcFlag);
+}
+}//end function
+function C_2(){//alert(this.className);
+if(!(this.className.match("_F"))){
+this.className +=( " " + "_9" );
+this.innerHTML = "2";
+HowManyTimes();
+this.removeEventListener("click",C_2);
+this.removeEventListener("contextmenu",funcFlag);
+}
+}//end function
+function C_3(){//alert(this.className);
+if(!(this.className.match("_F"))){
+this.className +=( " " + "_9" );
+this.innerHTML = "3";
+HowManyTimes();
+this.removeEventListener("click",C_3);
+this.removeEventListener("contextmenu",funcFlag);
+}
+}//end function
+function C_4(){//alert(this.className);
+if(!(this.className.match("_F"))){
+this.className +=( " " + "_9" );
+this.innerHTML = "4";
+HowManyTimes();
+this.removeEventListener("click",C_4);
+this.removeEventListener("contextmenu",funcFlag);
+}
+}//end function
+function C_5(){//alert(this.className);
+if(!(this.className.match("_F"))){
+this.className +=( " " + "_9" );
+this.innerHTML = "5";
+HowManyTimes();
+this.removeEventListener("click",C_5);
+this.removeEventListener("contextmenu",funcFlag);
+}
+}//end function
+function C_6(){//alert(this.className);
+if(!(this.className.match("_F"))){
+this.className +=( " " + "_9" );
+this.innerHTML = "6";
+HowManyTimes();
+this.removeEventListener("click",C_6);
+this.removeEventListener("contextmenu",funcFlag);
+}
+}//end function
+function C_7(){//alert(this.className);
+if(!(this.className.match("_F"))){
+this.className +=( " " + "_9" );
+this.innerHTML = "7";
+HowManyTimes();
+this.removeEventListener("click",C_7);
+this.removeEventListener("contextmenu",funcFlag);
+}
+}//end function
+function C_8(){//alert(this.className);
+if(!(this.className.match("_F"))){
+this.className +=( " " + "_9" );
+this.innerHTML = "8";
+HowManyTimes();
+this.removeEventListener("click",C_8);
+this.removeEventListener("contextmenu",funcFlag);
+}
+}//end function
+
+//function for loser
+function gameover(){
+if(!(this.className.match("_F"))){
+alert("oops!");
+//clear all onclick event and show all bombs
+for(d=0;d<10;d++){
+document.getElementsByClassName("Dead").item(d).removeEventListener("click" , gameover );
+document.getElementsByClassName("Dead").item(d).style.backgroundColor = "red";
+document.getElementsByClassName("Dead").item(d).innerHTML = " ";
+}//end for
+for(var ctL=1;ctL<=81;ctL++){
+//console.log(B[ctL].className);
+document.getElementById(ctL).removeEventListener("contextmenu",funcFlag);
+switch(B[ctL].className){
+case "_0":
+document.getElementById(ctL).removeEventListener("click",C_0);
+document.getElementById(ctL).removeEventListener("click",fucnC0);
+break;
+case "_1":
+document.getElementById(ctL).removeEventListener("click",C_1);
+break;
+case "_2":
+document.getElementById(ctL).removeEventListener("click",C_2);
+break;
+case "_3":
+document.getElementById(ctL).removeEventListener("click",C_3);
+break;
+case "_4":
+document.getElementById(ctL).removeEventListener("click",C_4);
+break;
+case "_5":
+document.getElementById(ctL).removeEventListener("click",C_5);
+break;
+case "_6":
+document.getElementById(ctL).removeEventListener("click",C_6);
+break;
+case "_7":
+document.getElementById(ctL).removeEventListener("click",C_7);
+break;
+case "_8":
+document.getElementById(ctL).removeEventListener("click",C_8);
+break;
+case "_9":
+document.getElementById(ctL).removeEventListener("click",C_9);
+break;
+}//end switch
+}//end for
+time = 1000;
+}
+}//end function
+
+//function for the path to win
+function HowManyTimes(){
+//alert("start to count");
+var CountClicks = 0;
+for(var cc=1;cc<=81;cc++){
+if(B[cc].className.match("_9")){CountClicks++;
+//console.log(B[cc].className);
+}//end if
+}//end for
+//console.log(CountClicks);
+/*
+if(CountClicks===3){console.log(CountClicks);}
+if(CountClicks===20){console.log(CountClicks);}
+if(CountClicks===30){console.log(CountClicks);}
+if(CountClicks===40){console.log(CountClicks);}
+if(CountClicks===50){console.log(CountClicks);}
+if(CountClicks===60){console.log(CountClicks);}
+*/
+if(CountClicks===71){
+//console.log(CountClicks);
+for(var d=0;d<10;d++){
+document.getElementsByClassName("Dead").item(d).removeEventListener("click" , gameover );
+document.getElementsByClassName("Dead").item(d).style.backgroundColor = "darkred";
+document.getElementsByClassName("Dead").item(d).innerHTML = " ";
+}//end for
+for(var ctW=1;ctW<=81;ctW++){
+//console.log(B[ctW].className);
+document.getElementById(ctW).removeEventListener("contextmenu",funcFlag);
+switch(B[ctW].className){
+case "_0":
+document.getElementById(ctW).removeEventListener("click",C_0);
+document.getElementById(ctW).removeEventListener("click",fucnC0);
+break;
+case "_1":
+document.getElementById(ctW).removeEventListener("click",C_1);
+break;
+case "_2":
+document.getElementById(ctW).removeEventListener("click",C_2);
+break;
+case "_3":
+document.getElementById(ctW).removeEventListener("click",C_3);
+break;
+case "_4":
+document.getElementById(ctW).removeEventListener("click",C_4);
+break;
+case "_5":
+document.getElementById(ctW).removeEventListener("click",C_5);
+break;
+case "_6":
+document.getElementById(ctW).removeEventListener("click",C_6);
+break;
+case "_7":
+document.getElementById(ctW).removeEventListener("click",C_7);
+break;
+case "_8":
+document.getElementById(ctW).removeEventListener("click",C_8);
+break;
+case "_9":
+document.getElementById(ctW).removeEventListener("click",C_9);
+break;
+}//end switch
+}//end for
+time = 1000;
+alert("You Win!!");
+}//end if
+}
+
+//flag
+function Flag(ids){
+if(ids){var ID_f = Number(ids.id);}
+//alert(ID_f);
+if(!(ids.className.match("_9"))){
+switch(F[ID_f]){
+case 0:
+//alert("0");
+F[ID_f]=1;
+B[ID_f].className = FN[ID_f] + " " + "_F";
+B[ID_f].innerHTML = "F";
+FLAGNUMBER += 1;
+BOMBNUMBER -= 1;//!!
+document.getElementById("bomb_number").innerHTML = BOMBNUMBER;
+//console.log(B[ID_f]);
+break;
+case 1:
+//alert("1");
+F[ID_f]=2;
+B[ID_f].className = FN[ID_f] + " " + "_Q";
+B[ID_f].innerHTML = "?";
+FLAGNUMBER -= 1
+BOMBNUMBER += 1;//!!
+document.getElementById("bomb_number").innerHTML = BOMBNUMBER;
+//console.log(B[ID_f]);
+break;
+case 2:
+//alert("2");
+F[ID_f]=0;
+B[ID_f].className = FN[ID_f];
+B[ID_f].innerHTML = " ";
+//console.log(B[ID_f]);
+break;
+}//end switch
+
+//if all mines are with a flag !! and no other classes are with a flag => win !
+if( document.getElementsByClassName("Dead").item(1).className.match("_F")&& 
+document.getElementsByClassName("Dead").item(2).className.match("_F")&&
+document.getElementsByClassName("Dead").item(3).className.match("_F")&&
+document.getElementsByClassName("Dead").item(4).className.match("_F")&&
+document.getElementsByClassName("Dead").item(5).className.match("_F")&&
+document.getElementsByClassName("Dead").item(6).className.match("_F")&&
+document.getElementsByClassName("Dead").item(7).className.match("_F")&&
+document.getElementsByClassName("Dead").item(8).className.match("_F")&&
+document.getElementsByClassName("Dead").item(9).className.match("_F")&&
+document.getElementsByClassName("Dead").item(0).className.match("_F")&&
+FLAGNUMBER===10
+) {
+for(var d=0;d<10;d++){
+document.getElementsByClassName("Dead").item(d).removeEventListener("click" , gameover );
+document.getElementsByClassName("Dead").item(d).style.backgroundColor = "darkred";
+document.getElementsByClassName("Dead").item(d).innerHTML = " ";
+}//end for
+for(var ctW=1;ctW<=81;ctW++){
+//console.log(B[ctW].className);
+document.getElementById(ctW).removeEventListener("contextmenu",funcFlag);
+switch(B[ctW].className){
+case "_0":
+document.getElementById(ctW).removeEventListener("click",C_0);
+document.getElementById(ctW).removeEventListener("click",fucnC0);
+break;
+case "_1":
+document.getElementById(ctW).removeEventListener("click",C_1);
+break;
+case "_2":
+document.getElementById(ctW).removeEventListener("click",C_2);
+break;
+case "_3":
+document.getElementById(ctW).removeEventListener("click",C_3);
+break;
+case "_4":
+document.getElementById(ctW).removeEventListener("click",C_4);
+break;
+case "_5":
+document.getElementById(ctW).removeEventListener("click",C_5);
+break;
+case "_6":
+document.getElementById(ctW).removeEventListener("click",C_6);
+break;
+case "_7":
+document.getElementById(ctW).removeEventListener("click",C_7);
+break;
+case "_8":
+document.getElementById(ctW).removeEventListener("click",C_8);
+break;
+case "_9":
+document.getElementById(ctW).removeEventListener("click",C_9);
+break;
+}//end switch
+}//end for
+time = 1000;
+alert("You Win!!");
+}//end if
+}//end if
+}//end function
+
+</script>
+</body>
+</html>
