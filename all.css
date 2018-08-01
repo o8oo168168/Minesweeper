@@ -1,0 +1,95 @@
+html {
+	font-size: 62.5%;
+}
+
+body {
+	background-image: linear-gradient(to right, #536976, #292E49);
+}
+
+.app {
+	padding-top: 8%;
+}
+
+.game {
+	position: relative;
+	margin: 0 auto;
+	border: 3px outset white;
+	border-radius: 3px;
+}
+.game__header {
+	display: flex;
+	justify-content: space-around;
+	border: 3px outset #F0F0F0;
+	background-color: #ADADAD;
+	padding: 40px 0;
+}
+.game__header__counter {
+	width: 50px;
+	height: 40px;
+	font: 28px arial, sans-serif;
+	text-align: center;
+	background-color: black;
+	color: red;
+	border: 2px inset #808080;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+.game__header__icon {
+	font: 27px arial, sans-serif;
+	color: yellow;
+	padding: 0px 10px;
+	background-color: #C0C0C0;
+	border: 3px outset white;
+	height: 42px;
+	cursor: pointer;
+	text-shadow: 1px 1px 6px #8c8c8c;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+.game__header__icon:active {
+	border: 3px inset #d0d0d0;
+}
+.game__map__row {
+	display: flex;
+}
+.game__map__row__block {
+	width: 0.5px;
+	height: 0.5px;
+	background: #ADADAD;
+	border: 3px outset;
+	border-color: #F0F0F0;
+	padding: 10px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+.game__map__row__block--bombStillCovered {
+	background: darkred;
+}
+.game__map__row__block--flag {
+	color: red;
+}
+.game__map__row__block--revealed {
+	border: 3px inset #d0d0d0;
+}
+.game__map__row__block--revealed--1 {
+	color: #0000E3;
+}
+.game__map__row__block--revealed--2 {
+	color: #006000;
+}
+.game__map__row__block--revealed--3 {
+	color: #EA0000;
+}
+.game__map__row__block--revealed--4, .game__map__row__block--revealed--5, .game__map__row__block--revealed--6, .game__map__row__block--revealed--7, .game__map__row__block--revealed--8 {
+	color: #000093;
+}
+.game__map__row__block--revealed--B {
+	background: red;
+}
+.game__map__row__block:active {
+	border: 3px inset #d0d0d0;
+}
+
