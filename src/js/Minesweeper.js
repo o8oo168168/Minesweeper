@@ -446,7 +446,7 @@ Minesweeper.prototype.startGame = function() {
     //A. add eventListener: start timer
     const timerElm = document.querySelector(`${this.containerClassName} .game__header__counter--time`);
 
-    self = this;
+    const self = this;
     this.timerInterval = setInterval(function() {
         if(self.timer >= 999){
             self.timer = 999;
